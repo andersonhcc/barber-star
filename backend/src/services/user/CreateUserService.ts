@@ -13,7 +13,7 @@ class CreateUserService {
   
   async execute({ name, email, password } : IRequest){
     
-    const userAlreadyExists =  this.userRepository.findEmail(email);
+    const userAlreadyExists =  await this.userRepository.findEmail(email);
 
     if(userAlreadyExists){
       throw new Error("User/Email already exists");

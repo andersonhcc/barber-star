@@ -9,7 +9,7 @@ interface IUserCreateDTO {
 
 interface IUserRepository {
   create({ name, email, password }: IUserCreateDTO): void;
-  findEmail( email: string): User | null;
+  findEmail( email: string): Promise<User | null>;
 }
 
 export { IUserRepository, IUserCreateDTO };

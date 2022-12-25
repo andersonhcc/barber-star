@@ -2,16 +2,14 @@ import { Response, Request } from "express";
 import { CreateUserService } from "../../services/user/CreateUserService";
 import { UserRepository} from '../../repositories/user/UserRepository';
 
+const userRepository = new UserRepository();
+
+
 class CreateUserController {
-  constructor() {
-    
-  }
     
   async handle(req: Request, res: Response) {
 
     const { name, email, password } = req.body;
-
-    const userRepository = new UserRepository();
     
     const createUserService = new CreateUserService(userRepository);  
 
