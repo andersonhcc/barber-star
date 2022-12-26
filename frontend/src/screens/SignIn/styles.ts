@@ -8,7 +8,7 @@ export const Container = styled.SafeAreaView`
 
 export const Header = styled.View`
   width: 100%;
-  margin-top: 120px;
+  margin-top: 80px;
 
 
 `;
@@ -29,7 +29,7 @@ export const TitleStar = styled.Text`
 export const SubTitle = styled.Text`
   font-size: 15px;
   font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.secondary};
   line-height: 25px;
   margin-top: 16px;
 
@@ -37,9 +37,28 @@ export const SubTitle = styled.Text`
 
 export const Form = styled.View`
   width: 100%;
-  margin: 64px 0;
+  margin: 74px 0;
 `;
 
 export const Footer = styled.View`
   align-items: center;
+`;
+
+export const WrapperSignUp = styled.View`
+  flex-direction: row;
+  padding-top: 2%;
+`;
+
+export const ButtonSignUp = styled.TouchableOpacity``;
+
+export const LabelSignUp = styled.Text`
+  font-size: 14px;
+  font-family: ${({ theme }) => theme.fonts.medium};
+  color: ${({ theme }) => theme.colors.text_datail};  
+`;
+
+export const TileSignUp = styled.Text`
+  font-size: 14px;
+  font-family: ${({ theme }) => theme.fonts.medium};
+  color: ${({ theme }) => theme.colors.primary};  
 `;

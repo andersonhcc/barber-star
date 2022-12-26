@@ -6,6 +6,7 @@ export default {
     background_secondary: "#cfd8dc",
     primary: '#222852',
     secondary: '#aa1f2b',
+    secondary_light: '#90373e',
     background_finish: '#43405D',
 
     text: '#C6C6C6',
