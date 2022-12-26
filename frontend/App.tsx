@@ -1,5 +1,5 @@
-import React, { useCallback, useMemo } from 'react';
-import { useColorScheme, StatusBar } from 'react-native';
+import React, { useCallback } from 'react';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
 import * as SplashScreen from "expo-splash-screen";
@@ -43,7 +43,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar 
-      barStyle='light-content'
+      barStyle='dark-content'
       translucent
       backgroundColor={"transparent"}
       />
