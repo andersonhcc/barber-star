@@ -1,10 +1,10 @@
 import { IHairCutRepository } from '../../repositories/haircut/IHairCutRepository';
+
 interface IRequest {
   user_id: string;
   name: string;
   price: number;
 }
-
 
 class CreateHairCutService {
   constructor(private haircutRepository: IHairCutRepository){}
@@ -15,7 +15,11 @@ class CreateHairCutService {
     price
   } : IRequest){
     
-    const hairCut = await this.haircutRepository.create({ user_id, name, price});
+    const hairCut = await this.haircutRepository.create({
+      user_id,
+      name,
+      price
+    });
 
     return hairCut;
   }

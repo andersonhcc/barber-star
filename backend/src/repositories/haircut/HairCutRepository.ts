@@ -1,15 +1,21 @@
 import prismaClient from "../../prisma";
 import { HairCut } from "../../models/HairCut";
-import { IHairCutCreateDTO, IHairCutRepository } from "./IHairCutRepository";
+import {
+  IHairCutCreateDTO,
+  IHairCutRepository,
+  IHairListDTO,
+  IHairUpdateDTO
+} from "./IHairCutRepository";
 
-class HairCutRepository implements IHairCutRepository { 
+class HairCutRepository implements IHairCutRepository {
   private hairCut = prismaClient.haircut;
   private user = prismaClient.user;
 
-  constructor(){
+  constructor() {
     this.hairCut = prismaClient.haircut;
     this.user = prismaClient.user;
   }
+
   async create({ user_id, name, price }: IHairCutCreateDTO): void {
 
     //checking if it has already reached the limit
@@ -21,7 +27,7 @@ class HairCutRepository implements IHairCutRepository {
     });
 
     const user = await this.user.findFirst({
-      where:{
+      where: {
         id: user_id,
       },
       include: {
@@ -29,7 +35,7 @@ class HairCutRepository implements IHairCutRepository {
       }
     });
 
-    if(myHairCuts >= 3 && user?.subscription?.status !== 'active'){
+    if (myHairCuts >= 3 && user?.subscription?.status !== 'active') {
       throw new Error('Not authorized');
     }
 
@@ -46,6 +52,51 @@ class HairCutRepository implements IHairCutRepository {
     return hairCut;
 
   }
+
+  async list({ user_id, status }: IHairListDTO): HairCut {
+
+    const hairCut = await this.hairCut.findMany({
+      where: {
+        user_id,
+        status: status === 'true' ? true : false
+      }
+    });
+
+    return hairCut;
+
+  }
+
+  async update({ haircut_id, name, price, status, user_id }: IHairUpdateDTO): HairCut {
+    
+    const user = await this.user.findFirst({
+      where:{
+        id: user_id,
+      },
+      include: {
+        subscription: true,
+      }
+    })
+
+    if(user?.subscription?.status !== 'active'){
+      throw new Error('Not authorized');
+    }
+
+    const hairCut = await this.hairCut.update({
+      where: {
+        id: haircut_id,
+      },
+      data: {
+        name,
+        price,
+        status: status === 'true' ? true : false
+      }
+    })
+
+    return hairCut;
+
+
+  }
+
 
 }
 

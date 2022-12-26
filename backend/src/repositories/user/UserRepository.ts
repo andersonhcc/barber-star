@@ -26,7 +26,7 @@ class UserRepository implements IUserRepository {
         name: true,
         email: true,
       }
-    })
+    });
     return user;
   }
 
@@ -36,7 +36,7 @@ class UserRepository implements IUserRepository {
       where: {
         email,
       }
-    })
+    });
 
     return user;
   }
@@ -122,7 +122,7 @@ class UserRepository implements IUserRepository {
         }
       });
 
-      if(!userAlreadyExists){
+      if (!userAlreadyExists) {
         throw new Error('User not exists.');
       }
 
@@ -134,7 +134,7 @@ class UserRepository implements IUserRepository {
           name,
           endereco,
         },
-        select:{
+        select: {
           name: true,
           email: true,
           endereco: true,
@@ -147,7 +147,7 @@ class UserRepository implements IUserRepository {
     } catch (error) {
 
       console.log(error);
-      
+
       throw new Error(error);
     }
 
