@@ -84,10 +84,32 @@ class UserRepository implements IUserRepository {
         status: user?.subscription?.status,
       } : null,
     };
-
     
   }
 
+  async detailsUser(user_id: string): Promise<User> {
+    const user = await this.users.findFirst({
+      where: {
+        id: user_id,
+      },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        endereco: true,
+        subscription: {
+          select: {
+            id: true,
+            priceId: true,
+            status: true,
+          }
+        }
+      }
+    })
+    
+    return user;
+
+  }
 
 }
 
