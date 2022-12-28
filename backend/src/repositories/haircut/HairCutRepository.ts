@@ -69,9 +69,9 @@ class HairCutRepository implements IHairCutRepository {
   }
 
   async update({ haircut_id, name, price, status, user_id }: IHairUpdateDTO): HairCut {
-    
+
     const user = await this.user.findFirst({
-      where:{
+      where: {
         id: user_id,
       },
       include: {
@@ -79,7 +79,7 @@ class HairCutRepository implements IHairCutRepository {
       }
     })
 
-    if(user?.subscription?.status !== 'active'){
+    if (user?.subscription?.status !== 'active') {
       throw new Error('Not authorized');
     }
 
@@ -106,7 +106,7 @@ class HairCutRepository implements IHairCutRepository {
         id: user_id,
       },
       select: {
-        subscription:{
+        subscription: {
           select: {
             id: true,
             status: true,
@@ -120,8 +120,28 @@ class HairCutRepository implements IHairCutRepository {
 
   }
 
+  async countHairCut(user_id: string): Promise<number | null> {
+
+    const count = await this.hairCut.count({
+      where: {
+        user_id,
+      }
+    })
+
+    return count;
+  }
+
+
+  async detailsHairCut(haircut_id: string): Promise<HairCut | null> {
+
+    const haircut = await this.hairCut.findFirst({
+      where: {
+        id: haircut_id
+      }
+    })
+
+    return haircut;
+  }
 
 }
-
-
 export { HairCutRepository };

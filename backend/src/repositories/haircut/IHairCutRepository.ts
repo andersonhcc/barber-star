@@ -30,6 +30,8 @@ interface IHairCutRepository {
   list({ user_id, status }: IHairListDTO): HairCut;
   update({ haircut_id, name, price, status, user_id}: IHairUpdateDTO): HairCut;
   verifySignature({ user_id } : IHairVerifyDTO ): IHairVerifyDTO;
+  countHairCut(user_id: string): Promise<number | null>;
+  detailsHairCut(haircut_id: string): Promise<HairCut | null>;
 
 }
 
