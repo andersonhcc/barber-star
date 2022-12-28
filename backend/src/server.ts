@@ -3,6 +3,7 @@ import 'express-async-errors';
 import cors from 'cors';
 import { routerUser } from './routes/user.routes';
 import { routerHairCut } from './routes/haircut.routes';
+import { routerSchedule } from './routes/schedule.routes';
 
 const app = express();
 
@@ -13,6 +14,9 @@ app.use(cors());
 app.use("/users", routerUser);
 
 app.use("/haircut", routerHairCut);
+
+app.use("/schedule", routerSchedule);
+
 
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
