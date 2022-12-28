@@ -19,12 +19,18 @@ interface IHairUpdateDTO {
   status: boolean;
 }
 
+interface IHairVerifyDTO {
+  user_id: string;
+  status?: boolean;
+}
+
 
 interface IHairCutRepository {
   create({ user_id, name, price }: IHairCutCreateDTO): void;
   list({ user_id, status }: IHairListDTO): HairCut;
   update({ haircut_id, name, price, status, user_id}: IHairUpdateDTO): HairCut;
+  verifySignature({ user_id } : IHairVerifyDTO ): IHairVerifyDTO;
 
 }
 
-export { IHairCutRepository, IHairCutCreateDTO, IHairListDTO };
+export { IHairCutRepository, IHairCutCreateDTO, IHairListDTO, IHairUpdateDTO, IHairVerifyDTO  };

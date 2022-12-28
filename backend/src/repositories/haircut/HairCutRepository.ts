@@ -4,7 +4,8 @@ import {
   IHairCutCreateDTO,
   IHairCutRepository,
   IHairListDTO,
-  IHairUpdateDTO
+  IHairUpdateDTO,
+  IHairVerifyDTO,
 } from "./IHairCutRepository";
 
 class HairCutRepository implements IHairCutRepository {
@@ -15,6 +16,7 @@ class HairCutRepository implements IHairCutRepository {
     this.hairCut = prismaClient.haircut;
     this.user = prismaClient.user;
   }
+
 
   async create({ user_id, name, price }: IHairCutCreateDTO): void {
 
@@ -93,6 +95,27 @@ class HairCutRepository implements IHairCutRepository {
     })
 
     return hairCut;
+
+
+  }
+
+  async verifySignature({ user_id }: IHairVerifyDTO): IHairVerifyDTO {
+
+    const status = await this.user.findFirst({
+      where: {
+        id: user_id,
+      },
+      select: {
+        subscription:{
+          select: {
+            id: true,
+            status: true,
+          }
+        }
+      }
+    })
+
+    return status;
 
 
   }
