@@ -6,8 +6,15 @@ interface ICreateScheduleDTO {
   customer: string;
 }
 
-interface IScheduleRepository {
-  create({ customer, haircut_id, user_id} : ICreateScheduleDTO): Promise<ICreateScheduleDTO | null>;
+
+interface IListScheduleDTO {
+  user_id: string;
 }
 
-export { IScheduleRepository, ICreateScheduleDTO }; 
+interface IScheduleRepository {
+  create({ customer, haircut_id, user_id} : ICreateScheduleDTO): Promise<ICreateScheduleDTO | null>;
+  list({ user_id } : IListScheduleDTO): Promise<Schedule[] | null>;
+  
+}
+
+export { IScheduleRepository, ICreateScheduleDTO, IListScheduleDTO }; 

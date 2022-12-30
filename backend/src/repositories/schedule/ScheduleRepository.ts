@@ -1,5 +1,11 @@
+import { Schedule } from "../../models/Schedule";
 import prismaClient from "../../prisma";
-import { ICreateScheduleDTO, IScheduleRepository } from './IScheduleRepository';
+
+import {
+  ICreateScheduleDTO,
+  IScheduleRepository,
+  IListScheduleDTO
+} from './IScheduleRepository';
 
 class ScheduleRepository implements IScheduleRepository {
   private service = prismaClient.service;
@@ -23,10 +29,24 @@ class ScheduleRepository implements IScheduleRepository {
     })
 
     return schedule;
-
   
   }
 
+  async list({ user_id }: IListScheduleDTO): Promise<Schedule[]> {
+    
+    const schedule = await this.service.findMany({
+      where:{
+        user_id,
+      },
+      select:{
+        customer: true,
+        id: true,
+        haircut: true,
+      }
+    })
+    
+    return schedule;
+  }
 }
 
 export { ScheduleRepository };
