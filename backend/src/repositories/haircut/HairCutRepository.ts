@@ -18,7 +18,11 @@ class HairCutRepository implements IHairCutRepository {
   }
 
 
-  async create({ user_id, name, price }: IHairCutCreateDTO): void {
+  async create({
+    user_id,
+    name,
+    price
+  }: IHairCutCreateDTO): Promise<IHairCutCreateDTO | null> {
 
     //checking if it has already reached the limit
 
@@ -55,7 +59,10 @@ class HairCutRepository implements IHairCutRepository {
 
   }
 
-  async list({ user_id, status }: IHairListDTO): HairCut {
+  async list({
+    user_id,
+    status
+  }: IHairListDTO): Promise<IHairListDTO[] | null> {
 
     const hairCut = await this.hairCut.findMany({
       where: {
@@ -68,7 +75,13 @@ class HairCutRepository implements IHairCutRepository {
 
   }
 
-  async update({ haircut_id, name, price, status, user_id }: IHairUpdateDTO): HairCut {
+  async update({
+    haircut_id,
+    name,
+    price,
+    status,
+    user_id
+  }: IHairUpdateDTO): Promise<IHairUpdateDTO | null> {
 
     const user = await this.user.findFirst({
       where: {
@@ -99,7 +112,7 @@ class HairCutRepository implements IHairCutRepository {
 
   }
 
-  async verifySignature({ user_id }: IHairVerifyDTO): IHairVerifyDTO {
+  async verifySignature({ user_id }: IHairVerifyDTO): Promise<IHairVerifyDTO | null> {
 
     const status = await this.user.findFirst({
       where: {
@@ -111,9 +124,11 @@ class HairCutRepository implements IHairCutRepository {
             id: true,
             status: true,
           }
-        }
+        },
       }
     })
+
+
 
     return status;
 

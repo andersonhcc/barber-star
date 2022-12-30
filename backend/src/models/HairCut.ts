@@ -4,6 +4,7 @@ interface HairCut {
   price: number;
   status: boolean;
 
+
   created_at?: Date;
   updated_at?: Date;
 
