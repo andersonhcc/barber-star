@@ -16,6 +16,7 @@ class CreateScheduleService {
     customer
   }: IRequest) {
 
+
     const schedule = await this.scheduleRepository.create({
       user_id,
       haircut_id,

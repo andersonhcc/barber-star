@@ -23,6 +23,7 @@ class ScheduleRepository implements IScheduleRepository {
     })
 
     return schedule;
+
   
   }
 

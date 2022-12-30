@@ -8,7 +8,8 @@ class CreateScheduleController {
 
   async handle(req: Request, res: Response){
 
-    const user_id = req.params.user_id as string;
+    const user_id = req.user_id as string;
+
 
     const { haircut_id, customer } = req.body;
 

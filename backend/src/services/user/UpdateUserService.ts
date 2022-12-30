@@ -11,6 +11,8 @@ class UpdateUserService {
 
   async execute({ user_id, name, endereco }: IRequest) {
 
+    console.log({ teste: user_id, endereco, name })
+
     const user = await this.userRepository.updateUser({ user_id, name, endereco });
     return user;
 
