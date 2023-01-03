@@ -8,6 +8,7 @@ import { api } from "../services/api";
 interface IAuth {
   user: IUser;
   signIn: (credentials: ISignIn) => Promise<void>;
+  signOut: () => void;
   loadingAuth: boolean;
 }
 
@@ -41,7 +42,6 @@ function AuthProvider({ children }: IAuthProvider) {
 
   async function signIn ({ email, password} : ISignIn){
     setLoadingAuth(true)
-
     try {
       const response = await api.post('/users/session', {
         email,
@@ -66,8 +66,6 @@ function AuthProvider({ children }: IAuthProvider) {
       });
 
       Alert.alert('Logado com sucesso!')
-
-
       setLoadingAuth(false);
     
     } catch (error) {
@@ -75,7 +73,19 @@ function AuthProvider({ children }: IAuthProvider) {
         Alert.alert('Entrar', 'Email e/ou senha incorretos');
         setLoadingAuth(false);
     }
+  }
 
+
+  async function signOut(){
+    await AsyncStorage.clear()
+    .then(() => {
+      setUser({
+        id: '',
+        name: '',
+        email: '',
+        token: '',
+      })
+    })
   }
 
 
@@ -83,6 +93,7 @@ function AuthProvider({ children }: IAuthProvider) {
     <AuthContext.Provider
       value={{
         signIn,
+        signOut,
         loadingAuth,
         user,
       }}

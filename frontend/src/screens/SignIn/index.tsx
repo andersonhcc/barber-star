@@ -9,6 +9,7 @@ import {
 import * as yup from 'yup';
 
 import { useAuth } from '../../context/AuthContext';
+import { api } from '../../services/api';
 
 import { useTheme } from 'styled-components';
 
@@ -52,9 +53,6 @@ export function SignIn() {
 
       await signIn({ email, password });
 
-
-
-
     } catch (error) {
       if (error instanceof yup.ValidationError) {
         Alert.alert('Opa', error.message)
@@ -66,6 +64,23 @@ export function SignIn() {
       }
     }
 
+  }
+
+  async function handleSignUp() {
+    try {
+      const response = await api.post('/users', {
+        name,
+        email,
+        password,
+      });
+
+      Alert.alert('Cadastrado com sucesso!');
+
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Ops', 'Não foi possível cadastrar sua barbearia!');
+
+    }
   }
 
 
@@ -121,7 +136,8 @@ export function SignIn() {
               <ButtonDefault
                 title="Cadastrar"
                 backgroundColor={theme.colors.primary}
-                disabled={true}
+                disabled={false}
+                onPress={handleSignUp}
               />
 
               : <ButtonDefault
