@@ -8,6 +8,8 @@ import {
 
 import * as yup from 'yup';
 
+import { useAuth } from '../../context/AuthContext';
+
 import { useTheme } from 'styled-components';
 
 import { Input } from '../../components/Input';
@@ -34,26 +36,33 @@ export function SignIn() {
   const [name, setName] = useState('');
   const theme = useTheme();
   const [signUp, setSignUp] = useState(false);
+  const { signIn } = useAuth();
 
   async function handleSignIn() {
     try {
       const schema = yup.object().shape({
         password: yup.string()
-        .required('A senha é obrigatória'),
+          .required('A senha é obrigatória'),
         email: yup.string()
           .required('E-mail obrigatório')
           .email('Digite um e-mail válido')
       })
-  
+
       await schema.validate({ email, password });
+
+      await signIn({ email, password });
+
+
+
+
     } catch (error) {
-      if(error instanceof yup.ValidationError){
-         Alert.alert('Opa', error.message)
-      }else{
-         Alert.alert(
-          'Erro na autenticação', 
+      if (error instanceof yup.ValidationError) {
+        Alert.alert('Opa', error.message)
+      } else {
+        Alert.alert(
+          'Erro na autenticação',
           'Ocorreu um erro ao fazer login, verifique as credenciais'
-          )
+        )
       }
     }
 
@@ -73,7 +82,7 @@ export function SignIn() {
               Bem vindo à <TitleStar>BarberStar.</TitleStar>
             </Title>
             <SubTitle>
-             {signUp ? 'Cadastre sua barbearia' : 'Entre na sua barbearia' } 
+              {signUp ? 'Cadastre sua barbearia' : 'Entre na sua barbearia'}
             </SubTitle>
           </Header>
 
@@ -128,9 +137,9 @@ export function SignIn() {
               {signUp ?
                 <>
                   <LabelSignUp>Deseja efetuar login? Clique</LabelSignUp>
-                  <ButtonSignUp 
-                  onPress={() => setSignUp(false)}
-                  activeOpacity={0.7}
+                  <ButtonSignUp
+                    onPress={() => setSignUp(false)}
+                    activeOpacity={0.7}
                   >
                     <TileSignUp> aqui</TileSignUp>
                   </ButtonSignUp>
@@ -138,9 +147,9 @@ export function SignIn() {
                 :
                 <>
                   <LabelSignUp>Deseja cadastrar sua barbearia? Clique</LabelSignUp>
-                  <ButtonSignUp 
-                  onPress={() => setSignUp(true)}
-                  activeOpacity={0.7}
+                  <ButtonSignUp
+                    onPress={() => setSignUp(true)}
+                    activeOpacity={0.7}
                   >
                     <TileSignUp> aqui</TileSignUp>
                   </ButtonSignUp>

@@ -8,6 +8,7 @@ import { ThemeProvider } from "styled-components";
 import theme from './src/styles/theme';
 import { AuthRoutes } from './src/routes/index.routes';
 
+import { AuthProvider } from './src/context/AuthContext';
 
 import {
   useFonts,
@@ -42,14 +43,17 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar 
-      barStyle='dark-content'
-      translucent
-      backgroundColor={"transparent"}
+      <StatusBar
+        barStyle='dark-content'
+        translucent
+        backgroundColor={"transparent"}
       />
       <NavigationContainer>
-        <AuthRoutes />
+        <AuthProvider>
 
+          <AuthRoutes />
+
+        </AuthProvider>
       </NavigationContainer>
     </ThemeProvider>
   );

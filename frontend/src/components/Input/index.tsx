@@ -11,7 +11,7 @@ interface Props extends TextInputProps {
 import {
   Container,
   InputText,
-  IconContainer,
+  IconContainer,  
 } from './styles';
 
 export function Input({ 
@@ -52,5 +52,5 @@ export function Input({
       />
 
     </Container>
-  );
+);
 }
