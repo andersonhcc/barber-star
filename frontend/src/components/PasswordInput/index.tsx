@@ -53,6 +53,7 @@ export function PasswordInput({
 
       <InputText 
       onFocus={handleInputFocus}
+      placeholderTextColor={theme.colors.white}
       onBlur={handleInputBlur}
       secureTextEntry={isPasswordVisible}
       isFocused={isFocused}

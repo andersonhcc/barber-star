@@ -27,13 +27,13 @@ export const IconContainer = styled.View<Props>`
   ` 
 }
 
-  background-color: ${({ theme }) => theme.colors.line};
+background-color: ${({ theme }) => theme.colors.background_secondary};
 
 `;
 
 export const InputText = styled.TextInput<Props>`
   flex: 1;
-  background-color: ${({ theme }) => theme.colors.line};
+  background-color: ${({ theme }) => theme.colors.background_secondary};
   
   ${({ isFocused, theme}) => 
   isFocused &&
@@ -42,7 +42,7 @@ export const InputText = styled.TextInput<Props>`
   border-bottom-color: ${theme.colors.primary};
   ` 
 }
-  color: ${({ theme }) => theme.colors.title};
+  color: ${({ theme }) => theme.colors.white};
 
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: 15px;

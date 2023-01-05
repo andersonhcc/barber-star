@@ -88,6 +88,7 @@ export function SignIn() {
     <KeyboardAvoidingView
       behavior='position'
       enabled
+      style={{backgroundColor: '#1F1B24', flex:1}}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 

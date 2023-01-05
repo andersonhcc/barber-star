@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.SafeAreaView`
   padding: 0 24px;
 
+  background-color: ${({ theme }) => theme.colors.background};
 
 `;
 
@@ -10,26 +11,25 @@ export const Header = styled.View`
   width: 100%;
   margin-top: 80px;
 
-
 `;
 
 export const Title = styled.Text`
   font-size: 40px;
   font-family: ${({ theme }) => theme.fonts.medium};
-  color: ${({ theme }) => theme.colors.title};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const TitleStar = styled.Text`
   font-size: 40px;
   font-family: ${({ theme }) => theme.fonts.medium};
-  color: ${({ theme }) => theme.colors.primary};
+   color: ${({ theme }) => theme.colors.primary}; 
 `;
 
 
 export const SubTitle = styled.Text`
   font-size: 15px;
   font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.white};
   line-height: 25px;
   margin-top: 16px;
 
@@ -38,15 +38,22 @@ export const SubTitle = styled.Text`
 export const Form = styled.View`
   width: 100%;
   margin: 74px 0;
+
+
 `;
 
 export const Footer = styled.View`
   align-items: center;
+
+
+  
 `;
 
 export const WrapperSignUp = styled.View`
   flex-direction: row;
   padding-top: 2%;
+
+
 `;
 
 export const ButtonSignUp = styled.TouchableOpacity``;
