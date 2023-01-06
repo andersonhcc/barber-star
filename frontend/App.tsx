@@ -6,7 +6,7 @@ import * as SplashScreen from "expo-splash-screen";
 
 import { ThemeProvider } from "styled-components";
 import theme from './src/styles/theme';
-import { AuthRoutes } from './src/routes/index.routes';
+import { Routes } from './src/routes';
 
 import { AuthProvider } from './src/context/AuthContext';
 
@@ -19,10 +19,13 @@ import {
 } from "@expo-google-fonts/poppins";
 
 
+
 SplashScreen.preventAutoHideAsync();
 SplashScreen.hideAsync();
 
 export default function App() {
+
+
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_400Regular_Italic,
@@ -40,7 +43,6 @@ export default function App() {
 
 
 
-
   return (
     <ThemeProvider theme={theme}>
       <StatusBar
@@ -51,7 +53,7 @@ export default function App() {
       <NavigationContainer>
         <AuthProvider>
 
-          <AuthRoutes />
+          <Routes />
 
         </AuthProvider>
       </NavigationContainer>

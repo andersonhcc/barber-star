@@ -37,10 +37,13 @@ export function SignIn() {
   const [name, setName] = useState('');
   const theme = useTheme();
   const [signUp, setSignUp] = useState(false);
-  const { signIn } = useAuth();
+  const { signIn, loadingAuth } = useAuth();
 
   async function handleSignIn() {
+    
+    
     try {
+
       const schema = yup.object().shape({
         password: yup.string()
           .required('A senha é obrigatória'),
@@ -51,7 +54,11 @@ export function SignIn() {
 
       await schema.validate({ email, password });
 
+
+
       await signIn({ email, password });
+
+
 
     } catch (error) {
       if (error instanceof yup.ValidationError) {
@@ -146,6 +153,7 @@ export function SignIn() {
                 backgroundColor={theme.colors.primary}
                 disabled={false}
                 onPress={handleSignIn}
+                isLoading={loadingAuth}
               />
             }
 

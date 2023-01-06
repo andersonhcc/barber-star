@@ -4,7 +4,6 @@ import { RootStackParamList } from './react-navigation';
 import { SceneName } from './scene-name';
 
 import { SignIn } from '../screens/SignIn';
-import { Scheduling } from '../screens/Scheduling';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -22,10 +21,7 @@ export function AuthRoutes() {
         component={SignIn}
       />
 
-      <Stack.Screen
-        name={SceneName.Scheduling}
-        component={Scheduling}
-      />
+
 
     </Stack.Navigator>
   );

@@ -82,6 +82,7 @@ export const Main = styled.View`
 
   padding-top: 5%;
 
+
 `;
 
 export const TitleScheduling = styled.Text`
@@ -94,9 +95,9 @@ export const WrapperList = styled.View``;
 
 export const Footer = styled.View`
   width:100%;
-  height: 50px;
 
   align-items: center;
+  justify-content: center;
 
   margin-bottom: 10px;
 `;
