@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
 
+import { useAuth } from '../../context/AuthContext';
+
 import theme from '../../styles/theme';
 
 import { ListScheduling } from '../../components/ListScheduling';
@@ -22,23 +24,32 @@ import {
   TitleScheduling,
   WrapperList,
   Footer,
+  ButtonSignUp,
+  Icon,
 } from './styles';
 
-interface IScheduling {
+export interface IHaircut {
   name: string;
   price: string;
-  curt: string;
+}
+
+export interface IScheduling {
+  id: string;
+  customer: string;
+  haircut: IHaircut;
 }
 
 export function Scheduling() {
-  const [scheduling, setScheduling] = useState<IScheduling[]>([]);
+  const [scheduling, setScheduling] = useState<IScheduling[] | []>([]);
+  const { user, signOut } = useAuth();
 
 
   async function getScheduling() {
 
-    const response = api.get('/haircut', {
-      
-    })
+    const response = await api.get('/schedule');
+
+    setScheduling(response.data);
+
 
   }
 
@@ -53,7 +64,12 @@ export function Scheduling() {
     <Container>
 
       <Header>
-        <Title>Olá, {"\n"}<SubTitle>Antonion's</SubTitle></Title>
+        <Title>Olá, {"\n"}<SubTitle>{user.name}</SubTitle></Title>
+
+        <ButtonSignUp onPress={signOut}>
+          <Icon />
+        </ButtonSignUp>
+
       </Header>
 
       <BoxPublicity>
@@ -72,8 +88,8 @@ export function Scheduling() {
         <WrapperList>
           <FlatList
             contentContainerStyle={{ paddingBottom: 170 }}
-            data={[1, 2, 3, 4, 5, 6, 7, 8]}
-            keyExtractor={item => item}
+            data={scheduling}
+            keyExtractor={item => item.id}
             showsVerticalScrollIndicator={false}
             renderItem={({ item }) => (
               <ListScheduling data={item} />

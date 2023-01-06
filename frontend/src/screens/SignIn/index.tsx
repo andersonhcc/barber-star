@@ -32,8 +32,8 @@ import {
 } from './styles';
 
 export function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('teste@teste.com');
+  const [password, setPassword] = useState('123123');
   const [name, setName] = useState('');
   const theme = useTheme();
   const [signUp, setSignUp] = useState(false);
@@ -104,6 +104,7 @@ export function SignIn() {
             <Title>
               Bem vindo à <TitleStar>BarberStar.</TitleStar>
             </Title>
+
             <SubTitle>
               {signUp ? 'Cadastre sua barbearia' : 'Entre na sua barbearia'}
             </SubTitle>

@@ -1,4 +1,6 @@
 import styled from 'styled-components/native';
+import { AntDesign } from '@expo/vector-icons'; 
+
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -10,7 +12,11 @@ export const Container = styled.SafeAreaView`
 export const Header = styled.View`
   width: 100%;
   height: 150px;
-  justify-content: flex-end;
+  flex-direction: row;
+
+  justify-content: space-between;
+  align-items: flex-end;
+
 `;
 
 export const Title = styled.Text`
@@ -100,6 +106,19 @@ export const Footer = styled.View`
   justify-content: center;
 
   margin-bottom: 10px;
+`;
+
+
+export const ButtonSignUp = styled.TouchableOpacity`
+  justify-content: center;
+  padding: 25px 20px;
+`;
+
+export const Icon = styled(AntDesign).attrs({
+  name: "logout"
+})`
+  font-size: 23px;
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 

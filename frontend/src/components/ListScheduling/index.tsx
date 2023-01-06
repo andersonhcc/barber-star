@@ -1,4 +1,5 @@
 import React from 'react';
+import { IScheduling } from '../../screens/Scheduling';
 
 import {
   Container,
@@ -10,19 +11,24 @@ import {
   Price,
 } from './styles';
 
-export function ListScheduling() {
+interface Props {
+  data: IScheduling
+}
+
+export function ListScheduling({ data }: Props) {
+
   return (
     <Container>
 
       <Image />
 
       <Details>
-        <Name>Anderson</Name>
-        <Curt>Corte: normal</Curt>
+        <Name>{data.customer}</Name>
+        <Curt>Corte: {data.haircut.name}</Curt>
       </Details>
 
       <WrapperPrice>
-        <Price>20$</Price>
+        <Price>{data.haircut.price}$</Price>
       </WrapperPrice>
 
     </Container>

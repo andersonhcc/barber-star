@@ -23,6 +23,7 @@ export const Image = styled(FontAwesome5).attrs({
 `;
 
 export const Details = styled.View`
+  flex: 1;
   padding-left: 5%;
 `;
 
