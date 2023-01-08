@@ -3,7 +3,9 @@ import styled from 'styled-components/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.5
+})`
   flex: 1;
   width: 90%;
   margin-top: 15px;

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Animated } from 'react-native';
 import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
@@ -38,10 +39,12 @@ export function SignIn() {
   const theme = useTheme();
   const [signUp, setSignUp] = useState(false);
   const { signIn, loadingAuth } = useAuth();
+  const opacityAnimated = useRef(new Animated.Value(0)).current;
+
 
   async function handleSignIn() {
-    
-    
+
+
     try {
 
       const schema = yup.object().shape({
@@ -91,100 +94,122 @@ export function SignIn() {
   }
 
 
+  useEffect(() => {
+
+    Animated.timing(opacityAnimated, {
+      toValue: 1,
+      duration: 3500,
+      useNativeDriver: false,
+    }).start();
+
+
+  }, [])
+
+
+
   return (
     <KeyboardAvoidingView
       behavior='position'
       enabled
-      style={{backgroundColor: '#1F1B24', flex:1}}
+      style={{ backgroundColor: '#1F1B24', flex: 1 }}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 
         <Container>
-          <Header>
-            <Title>
-              Bem vindo à <TitleStar>BarberStar.</TitleStar>
-            </Title>
 
-            <SubTitle>
-              {signUp ? 'Cadastre sua barbearia' : 'Entre na sua barbearia'}
-            </SubTitle>
-          </Header>
+          <Animated.View
+            style={{
+              opacity: opacityAnimated,
+            }}
+          >
 
-          <Form>
+            <Header>
+              <Title>
+                Bem vindo à <TitleStar>BarberStar.</TitleStar>
+              </Title>
 
-            {signUp &&
+              <SubTitle>
+                {signUp ? 'Cadastre sua barbearia' : 'Entre na sua barbearia'}
+              </SubTitle>
+            </Header>
+
+            <Form>
+
+              {signUp &&
+                <Input
+                  iconName='home'
+                  placeholder='Nome da barbearia'
+                  onChangeText={setName}
+                  value={name}
+                />
+
+              }
               <Input
-                iconName='home'
-                placeholder='Nome da barbearia'
-                onChangeText={setName}
-                value={name}
+                iconName='mail'
+                placeholder='E-mail'
+                keyboardType='email-address'
+                autoCorrect={false}
+                autoCapitalize={'none'}
+                onChangeText={setEmail}
+                value={email}
               />
 
-            }
-            <Input
-              iconName='mail'
-              placeholder='E-mail'
-              keyboardType='email-address'
-              autoCorrect={false}
-              autoCapitalize={'none'}
-              onChangeText={setEmail}
-              value={email}
-            />
-
-            <PasswordInput
-              iconName='lock'
-              placeholder='Senha'
-              onChangeText={setPassword}
-              value={password}
-            />
-
-          </Form>
-
-          <Footer>
-            {signUp ?
-              <ButtonDefault
-                title="Cadastrar"
-                backgroundColor={theme.colors.primary}
-                disabled={false}
-                onPress={handleSignUp}
+              <PasswordInput
+                iconName='lock'
+                placeholder='Senha'
+                onChangeText={setPassword}
+                value={password}
               />
 
-              : <ButtonDefault
-                title="Entrar"
-                backgroundColor={theme.colors.primary}
-                disabled={false}
-                onPress={handleSignIn}
-                isLoading={loadingAuth}
-              />
-            }
+            </Form>
 
-
-            <WrapperSignUp>
+            <Footer>
               {signUp ?
-                <>
-                  <LabelSignUp>Deseja efetuar login? Clique</LabelSignUp>
-                  <ButtonSignUp
-                    onPress={() => setSignUp(false)}
-                    activeOpacity={0.7}
-                  >
-                    <TileSignUp> aqui</TileSignUp>
-                  </ButtonSignUp>
-                </>
-                :
-                <>
-                  <LabelSignUp>Deseja cadastrar sua barbearia? Clique</LabelSignUp>
-                  <ButtonSignUp
-                    onPress={() => setSignUp(true)}
-                    activeOpacity={0.7}
-                  >
-                    <TileSignUp> aqui</TileSignUp>
-                  </ButtonSignUp>
-                </>
+                <ButtonDefault
+                  title="Cadastrar"
+                  backgroundColor={theme.colors.primary}
+                  disabled={false}
+                  onPress={handleSignUp}
+                />
+
+                : <ButtonDefault
+                  title="Entrar"
+                  backgroundColor={theme.colors.primary}
+                  disabled={false}
+                  onPress={handleSignIn}
+                  isLoading={loadingAuth}
+                />
               }
 
-            </WrapperSignUp>
 
-          </Footer>
+              <WrapperSignUp>
+                {signUp ?
+                  <>
+                    <LabelSignUp>Deseja efetuar login? Clique</LabelSignUp>
+                    <ButtonSignUp
+                      onPress={() => setSignUp(false)}
+                      activeOpacity={0.7}
+                    >
+                      <TileSignUp> aqui</TileSignUp>
+                    </ButtonSignUp>
+                  </>
+                  :
+                  <>
+                    <LabelSignUp>Deseja cadastrar sua barbearia? Clique</LabelSignUp>
+                    <ButtonSignUp
+                      onPress={() => setSignUp(true)}
+                      activeOpacity={0.7}
+                    >
+                      <TileSignUp> aqui</TileSignUp>
+                    </ButtonSignUp>
+                  </>
+                }
+
+              </WrapperSignUp>
+
+            </Footer>
+
+          </Animated.View >
 
         </Container>
 

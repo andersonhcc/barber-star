@@ -45,7 +45,6 @@ export const Form = styled.View`
 export const Footer = styled.View`
   align-items: center;
 
-
   
 `;
 
