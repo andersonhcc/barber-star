@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { FlatList, Animated, Modal } from 'react-native';
+import { FlatList, Animated, Modal, Alert } from 'react-native';
 
 import { useAuth } from '../../context/AuthContext';
 
@@ -8,7 +8,6 @@ import theme from '../../styles/theme';
 import { ListScheduling } from '../../components/ListScheduling';
 import { ButtonDefault } from '../../components/ButtonDefault';
 import { ModalScheduling } from '../../components/ModalScheduling';
-import { DropHairCuts } from '../../components/DropHairCuts';
 
 import { api } from '../../services/api';
 
@@ -38,6 +37,11 @@ export interface IHaircut {
   price: string;
 }
 
+export interface ICreateServiceDTO {
+  customer: string;
+  haircut_id: string;
+}
+
 export interface IScheduling {
   id: string;
   customer: string;
@@ -52,8 +56,6 @@ export function Scheduling() {
   const { user, signOut } = useAuth();
   const [visible, setVisible] = useState(false);
   const opacityAnimated = useRef(new Animated.Value(0)).current;
-  const [hairCutSelected, setHairCutSelected] = useState('');
-  const [visibleDrop, setVisibleDrop] = useState(false);
 
 
   //refactor after
@@ -73,9 +75,32 @@ export function Scheduling() {
     
     const response = await api.get('/haircut?status=true');
 
-    console.log(response.data);
-
     setHairCuts(response.data);
+  }
+
+  // ecadaster service
+
+  async function cadasterService({ customer, haircut_id } : ICreateServiceDTO){
+
+    try {
+
+      const response = await api.post('/schedule', {
+        customer,
+        haircut_id,
+      });
+
+      // feedback user;
+      
+    } catch (err) {
+
+      console.log(err);
+      Alert.alert("Opa", "Algo de errado aconteceu");
+      
+    }
+
+
+
+
   }
 
 
@@ -91,6 +116,7 @@ export function Scheduling() {
     getHairCuts();
 
   }, [])
+
 
 
   return (
@@ -162,28 +188,14 @@ export function Scheduling() {
       >
         <ModalScheduling
           setVisible={() => setVisible(false)}
-          hairCutSelected={hairCutSelected}
-          setVisibleDrop={() => setVisibleDrop(true)}
+          hairCuts={hairCuts}
+          cadasterService={cadasterService}
 
         />
 
       </Modal>
 
 
-      <Modal 
-      visible={visibleDrop}
-      transparent={true}
-      animationType='fade'
-      >
-
-        <DropHairCuts 
-        setVisibleDrop={() => setVisibleDrop(false)}
-        setHairCutSelected={() => setHairCutSelected}
-        hairCuts={hairCuts}
-      
-        />
-
-      </Modal>
 
     </Container>
 

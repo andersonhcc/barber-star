@@ -28,12 +28,11 @@ export function DropHairCuts({
     setHairCutSelected({
       name: item.name,
       id: item.id,
-      price: item.price,
+      price: item.id
     });
     setVisibleDrop();
   }
 
-  console.log(hairCuts);
   
   return (
     <Container>

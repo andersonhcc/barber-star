@@ -33,7 +33,7 @@ import {
 } from './styles';
 
 export function SignIn() {
-  const [email, setEmail] = useState('teste@teste.com');
+  const [email, setEmail] = useState('teste@testeeee.com');
   const [password, setPassword] = useState('123123');
   const [name, setName] = useState('');
   const theme = useTheme();
