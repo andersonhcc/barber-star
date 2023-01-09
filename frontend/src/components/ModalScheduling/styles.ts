@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
-import { Feather } from '@expo/vector-icons';
+import { Feather, MaterialIcons } from '@expo/vector-icons';
+import { RFValue } from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
   flex:1;
@@ -53,5 +54,54 @@ export const WrapperButton = styled.View`
   align-items: center;
   
   padding: 20px;
+`;
+
+export const TextChoose = styled.Text`
+  align-self: flex-start;
+  
+  
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: 15px;
+  color: ${({ theme }) => theme.colors.white};
+
+`;
+
+
+export const ButtonHairCuts = styled.TouchableOpacity`
+  background-color: ${({ theme }) => theme.colors.background_secondary};
+  width: 90%;
+  padding-top: 3%;
+  align-items: center;
+  flex-direction: row;
+  justify-content: flex-end;
+
+`;
+
+export const BoxInfo = styled.View`
+  width: 90%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+`;
+
+export const IconMaterial = styled(MaterialIcons)`
+  font-size: ${RFValue(24)}px;
+  color: ${({ theme }) => theme.colors.white};
+`;
+
+export const TitleHairCut = styled.Text`
+
+  color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: ${RFValue(15)}px;
+  margin-left: 5px;
+
+`;
+
+export const IconFeather = styled(Feather)`
+  font-size: ${RFValue(25)}px;
+  color: ${({ theme }) => theme.colors.white};
+
 `;
 

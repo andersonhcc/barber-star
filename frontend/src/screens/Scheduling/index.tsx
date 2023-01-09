@@ -8,6 +8,7 @@ import theme from '../../styles/theme';
 import { ListScheduling } from '../../components/ListScheduling';
 import { ButtonDefault } from '../../components/ButtonDefault';
 import { ModalScheduling } from '../../components/ModalScheduling';
+import { DropHairCuts } from '../../components/DropHairCuts';
 
 import { api } from '../../services/api';
 
@@ -27,9 +28,12 @@ import {
   Footer,
   ButtonSignUp,
   Icon,
+  Default,
+  TextDefault
 } from './styles';
 
 export interface IHaircut {
+  id: string;
   name: string;
   price: string;
 }
@@ -44,9 +48,13 @@ export interface IScheduling {
 
 export function Scheduling() {
   const [scheduling, setScheduling] = useState<IScheduling[] | []>([]);
+  const [hairCuts, setHairCuts] = useState<IHaircut[] | []>([]);
   const { user, signOut } = useAuth();
   const [visible, setVisible] = useState(false);
   const opacityAnimated = useRef(new Animated.Value(0)).current;
+  const [hairCutSelected, setHairCutSelected] = useState('');
+  const [visibleDrop, setVisibleDrop] = useState(false);
+
 
   //refactor after
 
@@ -60,6 +68,16 @@ export function Scheduling() {
     setScheduling(response.data);
   }
 
+  //verify
+  async function getHairCuts(){
+    
+    const response = await api.get('/haircut?status=true');
+
+    console.log(response.data);
+
+    setHairCuts(response.data);
+  }
+
 
   useEffect(() => {
 
@@ -69,13 +87,13 @@ export function Scheduling() {
       useNativeDriver: false,
     }).start();
 
-    getScheduling()
+    getScheduling();
+    getHairCuts();
 
-  }, [att])
+  }, [])
 
 
   return (
-
 
     <Container>
 
@@ -110,7 +128,7 @@ export function Scheduling() {
 
           <WrapperList>
             <FlatList
-              contentContainerStyle={{ paddingBottom: 170 }}
+              contentContainerStyle={{ paddingBottom: 170, flexGrow: 1 }}
               data={scheduling}
               keyExtractor={item => item.id}
               showsVerticalScrollIndicator={false}
@@ -118,6 +136,11 @@ export function Scheduling() {
                 <ListScheduling data={item} setAtt={() => setAtt(!att)}/>
               )}
 
+              ListEmptyComponent={() => (
+                <Default>
+                  <TextDefault>Não há serviços agendados!</TextDefault>
+                </Default>
+              )}
             />
           </WrapperList>
         </Main>
@@ -137,11 +160,28 @@ export function Scheduling() {
         transparent={true}
         animationType='fade'
       >
-
         <ModalScheduling
           setVisible={() => setVisible(false)}
+          hairCutSelected={hairCutSelected}
+          setVisibleDrop={() => setVisibleDrop(true)}
+
         />
 
+      </Modal>
+
+
+      <Modal 
+      visible={visibleDrop}
+      transparent={true}
+      animationType='fade'
+      >
+
+        <DropHairCuts 
+        setVisibleDrop={() => setVisibleDrop(false)}
+        setHairCutSelected={() => setHairCutSelected}
+        hairCuts={hairCuts}
+      
+        />
 
       </Modal>
 

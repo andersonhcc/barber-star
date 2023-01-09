@@ -97,7 +97,9 @@ export const TitleScheduling = styled.Text`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-export const WrapperList = styled.View``;
+export const WrapperList = styled.View`
+  height: 100%;
+`;
 
 export const Footer = styled.View`
   width:100%;
@@ -122,3 +124,19 @@ export const Icon = styled(AntDesign).attrs({
 `;
 
 
+// componnent default flatlist
+
+
+export const Default = styled.View`
+  height: 100%;
+
+  align-items: center;
+  justify-content: center;
+`;
+
+export const TextDefault = styled.Text`
+  font-size: 18px;
+  font-family: ${({ theme }) => theme.fonts.regular};
+  color: ${({ theme }) => theme.colors.white};
+
+`;

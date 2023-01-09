@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, Modal } from 'react-native';
 import { ButtonDefault } from '../ButtonDefault';
 import { useTheme } from 'styled-components';
+
+import { IHaircut } from '../../screens/Scheduling';
 
 import {
   Container,
@@ -11,24 +13,34 @@ import {
   Form,
   InputName,
   WrapperButton,
+  TextChoose,
+  ButtonHairCuts,
+  BoxInfo,
+  IconMaterial,
+  TitleHairCut,
+  IconFeather,
 } from './styles';
 
 interface Props {
   setVisible(): void;
+  hairCutSelected: string;
+  setVisibleDrop: () => void;
+
 }
 
-export function ModalScheduling({ setVisible }: Props) {
+export function ModalScheduling({ setVisible: closeCadastro, hairCutSelected, setVisibleDrop }: Props) {
 
   const theme = useTheme();
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+
   return (
     <Container>
 
       <Main>
-        <Pressable onPress={setVisible}>
+        <Pressable onPress={closeCadastro}>
           <IconX name="x" />
         </Pressable>
 
@@ -42,12 +54,18 @@ export function ModalScheduling({ setVisible }: Props) {
             onChangeText={setName}
           />
 
-          <InputName
-            placeholder='Corte do cliente'
-            placeholderTextColor={theme.colors.white}
-            value={price}
-            onChangeText={setPrice}
-          />
+          <TextChoose>Escolha o corte</TextChoose>
+
+          <ButtonHairCuts onPress={() => setVisibleDrop()}>
+            
+            <BoxInfo>
+              <IconMaterial name="" />
+              <TitleHairCut>{hairCutSelected}</TitleHairCut>
+            </BoxInfo>
+
+            <IconFeather name="chevron-down"/>
+          </ButtonHairCuts>
+
 
           <WrapperButton>
 
@@ -65,6 +83,7 @@ export function ModalScheduling({ setVisible }: Props) {
         </Form>
 
       </Main>
+
 
     </Container>
   );
