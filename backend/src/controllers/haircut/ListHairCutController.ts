@@ -6,8 +6,10 @@ const hairCurtRepository = new HairCutRepository();
 
 class ListHairCutController {
   async handle(request: Request, response: Response){
+    
     const user_id = request.user_id;
     const status = request.query.status as string;
+
 
 
     const listHairCutService = new ListHairCutService(hairCurtRepository);

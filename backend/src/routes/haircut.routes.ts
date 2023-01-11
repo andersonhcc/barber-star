@@ -12,7 +12,7 @@ const routerHairCut = Router();
 
 routerHairCut.post('/', isAuthenticated, new CreateHairCutController().handle);
 
-routerHairCut.get('/', isAuthenticated, new ListHairCutController().handle);
+routerHairCut.get('/', isAuthenticated,  new ListHairCutController().handle);
 
 routerHairCut.put('/', isAuthenticated, new UpdateHairController().handle);
 
