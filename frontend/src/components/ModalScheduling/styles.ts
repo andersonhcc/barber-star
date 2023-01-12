@@ -46,6 +46,11 @@ export const InputName = styled.TextInput`
   
   background-color: ${({ theme }) => theme.colors.background_secondary};
   color: ${({ theme }) => theme.colors.white};
+
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: 13px;
+  color: ${({ theme }) => theme.colors.white};
+
 `;
 
 export const WrapperButton = styled.View`
@@ -80,8 +85,7 @@ export const ButtonHairCuts = styled.TouchableOpacity`
 export const BoxInfo = styled.View`
   width: 90%;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  padding-left: 10px;
 
 `;
 

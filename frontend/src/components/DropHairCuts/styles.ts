@@ -11,7 +11,7 @@ export const Container = styled.View`
 
 export const Main = styled.View`
   margin-top: ${HEIGHT - 500}px;
-  width: ${WIDTH - 40}px;
+  width: ${WIDTH - 100}px;
   height: ${HEIGHT/4}px;
   background-color: ${({ theme }) => theme.colors.background};
 `;
@@ -33,7 +33,7 @@ export const Title = styled.Text`
   
   
   font-family: ${({ theme }) => theme.fonts.regular};
-  font-size: 18px;
+  font-size: 13px;
   color: ${({ theme }) => theme.colors.white};
 
 `;

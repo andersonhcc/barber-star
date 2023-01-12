@@ -25,6 +25,7 @@ interface IUser {
   name: string;
   email: string;
   token: string;
+  endereco?: string;
 }
 
 
@@ -58,7 +59,7 @@ function AuthProvider({ children }: IAuthProvider) {
         password,
       })
 
-      const { id, name, token } = response.data;
+      const { id, name, token, endereco } = response.data;
       const data = {
         ...response.data,
       }
@@ -72,6 +73,7 @@ function AuthProvider({ children }: IAuthProvider) {
         id,
         name,
         token,
+        endereco,
         email,
       });
 

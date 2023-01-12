@@ -91,23 +91,39 @@ export const Main = styled.View`
 
 `;
 
+export const WrapperTitleScheduling = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
 export const TitleScheduling = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: 23px;
   color: ${({ theme }) => theme.colors.white};
 `;
 
-export const WrapperList = styled.View`
-  height: 100%;
-`;
-
-export const Footer = styled.View`
-  width:100%;
-
+export const ButtonAddScheduling = styled.TouchableOpacity`
+  width: 30px;
+  height: 30px;
+  border-radius: 50px ;
   align-items: center;
   justify-content: center;
 
-  margin-bottom: 10px;
+  margin-left: 15px;
+
+  background-color: ${({ theme }) => theme.colors.primary};
+`;
+
+export const LabelButton = styled.Text`
+  color: ${({ theme }) => theme.colors.white};
+
+  font-size: 20px;
+
+`;
+
+
+export const WrapperList = styled.View`
+  height: 100%;
 `;
 
 

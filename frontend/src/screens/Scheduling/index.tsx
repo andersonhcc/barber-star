@@ -24,11 +24,13 @@ import {
   Main,
   TitleScheduling,
   WrapperList,
-  Footer,
   ButtonSignUp,
   Icon,
   Default,
-  TextDefault
+  TextDefault,
+  WrapperTitleScheduling,
+  ButtonAddScheduling,
+  LabelButton,
 } from './styles';
 
 export interface IHaircut {
@@ -97,10 +99,6 @@ export function Scheduling() {
       Alert.alert("Opa", "Algo de errado aconteceu");
       
     }
-
-
-
-
   }
 
 
@@ -150,7 +148,14 @@ export function Scheduling() {
         </BoxPublicity>
 
         <Main>
-          <TitleScheduling>Agenda</TitleScheduling>
+          <WrapperTitleScheduling>
+
+            <TitleScheduling>Agenda</TitleScheduling>
+            <ButtonAddScheduling onPress={() => setVisible(true)}>
+              <LabelButton>+</LabelButton>
+            </ButtonAddScheduling>
+          
+          </WrapperTitleScheduling>
 
           <WrapperList>
             <FlatList
@@ -171,14 +176,7 @@ export function Scheduling() {
           </WrapperList>
         </Main>
 
-        <Footer>
-          <ButtonDefault
-            title="Cadastrar"
-            onPress={() => setVisible(true)}
-            backgroundColor={theme.colors.background_finish}
-          />
 
-        </Footer>
       </Animated.View >
 
       <Modal
