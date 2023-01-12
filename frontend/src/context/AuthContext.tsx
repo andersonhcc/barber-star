@@ -12,6 +12,7 @@ interface IAuth {
   loadingAuth: boolean;
   isAuthenticated: boolean;
   loading: boolean;
+  isPremium: boolean;
 
 
 }
@@ -39,6 +40,8 @@ export const AuthContext = createContext({} as IAuth);
 function AuthProvider({ children }: IAuthProvider) {
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isPremium, setIsPremium] = useState(false);
+
 
 
   const [user, setUser] = useState<IUser>({
@@ -130,7 +133,8 @@ function AuthProvider({ children }: IAuthProvider) {
         loadingAuth,
         user,
         isAuthenticated,
-        loading
+        loading,
+        isPremium
       }}
     >
       {children}

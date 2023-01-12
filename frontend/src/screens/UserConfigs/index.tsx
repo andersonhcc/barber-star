@@ -22,7 +22,7 @@ import {
 } from './styles';
 
 export function UserConfigs() {
-  const { user } = useAuth();
+  const { user, isPremium } = useAuth();
   const theme = useTheme();
   const [visible, setVisible] = useState(false);
   
@@ -47,7 +47,7 @@ export function UserConfigs() {
 
         <TitlePlan>Seu plano</TitlePlan>
         <BoxPlan>
-          <SubTitlePLan>Plano Grátis</SubTitlePLan>
+          <SubTitlePLan isPremium={isPremium}>{isPremium ? "Plano Premium" : "Plano Grátis"}</SubTitlePLan>
           <ButtonChangePlan
             activeOpacity={0.1}
             onPress={() => setVisible(true)}

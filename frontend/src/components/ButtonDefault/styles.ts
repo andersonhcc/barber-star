@@ -13,6 +13,7 @@ interface Props {
 
 interface TextProps {
   fontSize?: number;
+  fontColor?: string;
 }
 
 export const Container = styled.TouchableOpacity<Props>`
@@ -35,7 +36,8 @@ export const TextButtonAcess = styled.Text<TextProps>`
   
   ${({ fontSize }) => fontSize ? css`font-size: ${RFValue(fontSize)}px` : css`font-size: ${RFValue(17)}px`}
 
-  color: ${({ theme }) => theme.colors.white};
+  ${({ fontColor }) => fontColor ? css`color: ${fontColor}` : css`color: ${({ theme}) => theme.colors.white}`}
+
   font-family: ${({ theme }) => theme.fonts.regular};
 
 `;

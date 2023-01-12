@@ -1,4 +1,8 @@
-import styled from 'styled-components/native';
+import styled , { css }from 'styled-components/native';
+
+interface TextProps {
+  isPremium: boolean;
+}
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -50,10 +54,13 @@ export const BoxPlan = styled.View`
 
 `;
 
-export const SubTitlePLan = styled.Text`
+export const SubTitlePLan = styled.Text<TextProps>`
   font-family: ${({ theme }) => theme.fonts.bold};
   font-size: 16px;
   color: ${({ theme }) => theme.colors.check};
+
+  ${({ isPremium, theme }) => isPremium ? css`color: ${theme.colors.secondary}` : css`color: ${theme.colors.check}`}
+
 
 `;
 
