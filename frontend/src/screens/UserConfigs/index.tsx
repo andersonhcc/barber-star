@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Modal } from 'react-native';
+import { Modal, Alert } from 'react-native';
+
+import { api } from '../../services/api';
 
 import { ButtonDefault } from '../../components/ButtonDefault';
 import { OptionProfile } from '../../components/OptionProfile';
@@ -22,10 +24,44 @@ import {
 } from './styles';
 
 export function UserConfigs() {
-  const { user, isPremium } = useAuth();
+  const { user, setUser,  isPremium } = useAuth();
   const theme = useTheme();
+  const [name, setName] = useState(user.name);
+  const [endereco, setEndereco] = useState(user.endereco);
   const [visible, setVisible] = useState(false);
-  
+
+  async function handleEdit() {
+
+    if(name === '' || endereco === ''){
+      return;
+    }
+
+    try {
+
+      const response = await api.put("/users", {
+        name,
+        endereco,
+      });
+
+      setUser({
+        name,
+        endereco,
+        email: user.email,
+        id: user.id,
+        token: user.token,
+      })
+
+      Alert.alert("Atualizado com sucesso!");
+      
+    } catch (error) {
+
+      console.log(error);
+      Alert.alert("Atualização", "Deu algum error.");
+      
+    }
+
+  }
+
   return (
     <Container>
 
@@ -37,12 +73,14 @@ export function UserConfigs() {
 
         <OptionProfile
           title="Nome barbearia"
-          placeholder={user.name}
+          value={name}
+          onChangeText={setName}
         />
 
         <OptionProfile
           title="Endereço"
-          placeholder={user.endereco}
+          value={endereco}
+          onChangeText={setEndereco}
         />
 
         <TitlePlan>Seu plano</TitlePlan>
@@ -61,6 +99,7 @@ export function UserConfigs() {
           <ButtonDefault
             title="Salvar"
             backgroundColor={theme.colors.primary}
+            onPress={handleEdit}
           />
 
 
@@ -68,11 +107,11 @@ export function UserConfigs() {
 
       </Main>
 
-      <Modal 
-      animationType='fade'
-      visible={visible
-      }>
-        <ModalPlans 
+      <Modal
+        animationType='fade'
+        visible={visible
+        }>
+        <ModalPlans
           setVisible={() => setVisible(false)}
         />
       </Modal>

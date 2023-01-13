@@ -7,6 +7,7 @@ import { api } from "../services/api";
 
 interface IAuth {
   user: IUser;
+  setUser:(value: IUser) => void;
   signIn: (credentials: ISignIn) => Promise<void>;
   signOut: () => void;
   loadingAuth: boolean;
@@ -134,7 +135,8 @@ function AuthProvider({ children }: IAuthProvider) {
         user,
         isAuthenticated,
         loading,
-        isPremium
+        isPremium,
+        setUser,
       }}
     >
       {children}
