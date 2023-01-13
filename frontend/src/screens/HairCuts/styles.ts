@@ -14,8 +14,10 @@ export const Header = styled.View`
   height: 110px;
   flex-direction: row;
 
-  justify-content: space-between;
   align-items: flex-end;
+
+  justify-content: space-between;
+  
 
 `;
 
@@ -30,8 +32,7 @@ export const Main = styled.View`
   width: 100%;
 `;
 
-export const BoxHairCut = styled.View`
-  flex: 1;
+export const BoxHairCut = styled.TouchableOpacity`
   width: 90%;
   margin-top: 15px;
   border-radius: 10px;

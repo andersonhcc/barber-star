@@ -123,7 +123,7 @@ export const LabelButton = styled.Text`
 
 
 export const WrapperList = styled.View`
-  height: 100%;
+  flex: 1;
 `;
 
 

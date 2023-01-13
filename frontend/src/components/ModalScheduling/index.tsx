@@ -23,12 +23,12 @@ import {
 } from './styles';
 
 interface Props {
-  setVisible(): void;
+  closeScheduling(): void;
   hairCuts: [] | IHaircut[]
   cadasterService({ customer, haircut_id }: ICreateServiceDTO): void;
 }
 
-export function ModalScheduling({ setVisible: closeCadastro, hairCuts, cadasterService }: Props) {
+export function ModalScheduling({ closeScheduling, hairCuts, cadasterService }: Props) {
 
   const theme = useTheme();
   const [name, setName] = useState('');
@@ -46,7 +46,8 @@ export function ModalScheduling({ setVisible: closeCadastro, hairCuts, cadasterS
 
     try {
 
-      await cadasterService(data);
+      cadasterService(data);
+      closeScheduling();
       
       //feedback user;
 
@@ -64,7 +65,7 @@ export function ModalScheduling({ setVisible: closeCadastro, hairCuts, cadasterS
     <Container>
 
       <Main>
-        <Pressable onPress={closeCadastro}>
+        <Pressable onPress={closeScheduling}>
           <IconX name="x" />
         </Pressable>
 

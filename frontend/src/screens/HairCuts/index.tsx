@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, Modal, Switch } from 'react-native';
+
 import { ButtonDefault } from '../../components/ButtonDefault';
+import { ModalEditCut } from '../../components/ModalEditCut';
 
 import { useTheme } from 'styled-components';
 
@@ -18,7 +20,7 @@ import {
   Footer,
 } from './styles';
 
-interface IHairCuts{
+interface IHairCuts {
   id: string;
   name: string;
   price: string;
@@ -28,19 +30,37 @@ interface IHairCuts{
 export function HairCuts() {
 
   const [hairCuts, setHairCuts] = useState<IHairCuts[]>([]);
+  const [editCut, setEditCut] = useState({} as IHairCuts);
+  const [visible, setVisible] = useState(false);
+  const [att, setAtt] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
 
   const theme = useTheme();
 
   async function getHairCuts() {
 
-    const response = await api.get("/haircut?status=true");
+    const response = await api.get(`/haircut?status=${isEnabled}`);
 
     setHairCuts(response.data);
   }
 
+  function editCurt(data: IHairCuts) {
+
+    setVisible(true)
+    setEditCut(data);
+  }
+
+  function toggleSwitch(){
+  
+    setIsEnabled(prevState => !prevState)
+    setAtt(!att);
+  
+  
+  }
+
   useEffect(() => {
     getHairCuts();
-  },[])
+  }, [att])
 
   return (
     <Container>
@@ -50,6 +70,15 @@ export function HairCuts() {
           Modelo de cortes
         </Title>
 
+        <Switch
+          trackColor={{ false: '#767577', true: `${theme.colors.check}` }}
+          thumbColor={isEnabled ? '#f4f3f4' : '#f4f3f4'}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+          style={{ marginRight: 40}}
+        />
+
       </Header>
 
       <Main>
@@ -57,7 +86,7 @@ export function HairCuts() {
           data={hairCuts}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <BoxHairCut>
+            <BoxHairCut onPress={() => editCurt(item)}>
               <Icon />
               <NameHairCut>{item.name}</NameHairCut>
               <Price>R$ {item.price}</Price>
@@ -67,11 +96,27 @@ export function HairCuts() {
       </Main>
 
       <Footer>
-        <ButtonDefault 
+        <ButtonDefault
           title="Cadastrar corte"
           backgroundColor={theme.colors.background_finish}
         />
       </Footer>
+
+
+      <Modal
+        transparent={true}
+        visible={visible}
+      >
+
+        <ModalEditCut
+          closeModal={() => setVisible(false)}
+          data={editCut}
+          setAtt={() => setAtt(!att)}
+
+        />
+
+
+      </Modal>
 
     </Container>
   );

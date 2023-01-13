@@ -38,6 +38,7 @@ export function ListScheduling({ data, setAtt }: Props) {
       const response = await api.delete(`/schedule?schedule_id=${data.id}`);
       
       closeModal();
+      setAtt();
 
       console.log("Finish.")
       

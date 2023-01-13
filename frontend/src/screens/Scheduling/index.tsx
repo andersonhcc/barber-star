@@ -91,7 +91,7 @@ export function Scheduling() {
         haircut_id,
       });
 
-      // feedback user;
+      setAtt(!att);
       
     } catch (err) {
 
@@ -113,7 +113,7 @@ export function Scheduling() {
     getScheduling();
     getHairCuts();
 
-  }, [])
+  }, [att])
 
 
 
@@ -185,7 +185,7 @@ export function Scheduling() {
         animationType='fade'
       >
         <ModalScheduling
-          setVisible={() => setVisible(false)}
+          closeScheduling={() => setVisible(false)}
           hairCuts={hairCuts}
           cadasterService={cadasterService}
 
