@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Pressable, Alert, Switch } from 'react-native';
-import { ButtonDefault } from '../ButtonDefault';
+import { ButtonDefault } from '../../ButtonDefault';
 import { useTheme } from 'styled-components';
 
-import { IHaircut } from '../../screens/Scheduling';
+import { IHaircut } from '../../../screens/Scheduling';
 
-import { api } from '../../services/api';
+import { api } from '../../../services/api';
 
 import {
   Container,
@@ -32,9 +32,6 @@ export function ModalEditCut({ closeModal, data, setAtt }: Props) {
   const [price, setPrice] = useState(data.price);
   const [isLoading, setIsLoading] = useState(false);
   const [isEnabled, setIsEnabled] = useState(true);
-
-
-  console.log(data.id);
 
   async function ediCut() {
     try {

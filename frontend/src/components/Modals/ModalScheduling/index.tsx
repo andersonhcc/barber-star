@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Pressable, Modal, Alert } from 'react-native';
-import { ButtonDefault } from '../ButtonDefault';
+import { ButtonDefault } from '../../ButtonDefault';
 import { useTheme } from 'styled-components';
 
-import { IHaircut, ICreateServiceDTO } from '../../screens/Scheduling';
-import { DropHairCuts } from '../DropHairCuts'
+import { IHaircut, ICreateServiceDTO } from '../../../screens/Scheduling';
+import { DropHairCuts } from '../../DropHairCuts'
 
 import {
   Container,

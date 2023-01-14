@@ -7,7 +7,8 @@ import theme from '../../styles/theme';
 
 import { ListScheduling } from '../../components/ListScheduling';
 import { ButtonDefault } from '../../components/ButtonDefault';
-import { ModalScheduling } from '../../components/ModalScheduling';
+import { ModalScheduling } from '../../components/Modals/ModalScheduling';
+import { ModalPlans } from '../../components/Modals/ModalPlans';
 
 import { api } from '../../services/api';
 
@@ -57,6 +58,7 @@ export function Scheduling() {
   const [hairCuts, setHairCuts] = useState<IHaircut[] | []>([]);
   const { user, signOut } = useAuth();
   const [visible, setVisible] = useState(false);
+  const [visiblePlans, setVisiblePlans] = useState(false);
   const opacityAnimated = useRef(new Animated.Value(0)).current;
 
 
@@ -141,7 +143,7 @@ export function Scheduling() {
           <TextPublicty>50% off</TextPublicty>
           <LabelPublicty>Adiquira já o plano premium!</LabelPublicty>
 
-          <ButtonPublicty>
+          <ButtonPublicty onPress={() => setVisiblePlans(true)}>
             <TitleButton>Aproveitar</TitleButton>
           </ButtonPublicty>
 
@@ -191,6 +193,12 @@ export function Scheduling() {
 
         />
 
+      </Modal>
+
+      <Modal visible={visiblePlans}>
+        <ModalPlans 
+          setVisible={() => setVisiblePlans(false)}
+        />
       </Modal>
 
 

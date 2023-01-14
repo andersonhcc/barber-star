@@ -152,7 +152,7 @@ export const Default = styled.View`
 
 export const TextDefault = styled.Text`
   font-size: 18px;
-  font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.fonts.medium};
+  color: ${({ theme }) => theme.colors.primary};
 
 `;

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FlatList, Modal, Switch } from 'react-native';
 
 import { ButtonDefault } from '../../components/ButtonDefault';
-import { ModalEditCut } from '../../components/ModalEditCut';
+import { ModalEditCut } from '../../components/Modals/ModalEditCut';
+import { ModalCreateCut } from '../../components/Modals/ModalCreateCut';
 
 import { useTheme } from 'styled-components';
 
@@ -32,6 +33,7 @@ export function HairCuts() {
   const [hairCuts, setHairCuts] = useState<IHairCuts[]>([]);
   const [editCut, setEditCut] = useState({} as IHairCuts);
   const [visible, setVisible] = useState(false);
+  const [visibleCadaster, setVisibleCadaster] = useState(false);
   const [att, setAtt] = useState(false);
   const [isEnabled, setIsEnabled] = useState(true);
 
@@ -99,6 +101,7 @@ export function HairCuts() {
         <ButtonDefault
           title="Cadastrar corte"
           backgroundColor={theme.colors.background_finish}
+          onPress={() => setVisibleCadaster(true)}
         />
       </Footer>
 
@@ -114,6 +117,20 @@ export function HairCuts() {
           setAtt={() => setAtt(!att)}
 
         />
+
+
+      </Modal>
+
+
+      <Modal
+        transparent={true}
+        visible={visibleCadaster}
+      >
+
+      <ModalCreateCut 
+          closeModal={() => setVisibleCadaster(false)}
+          setAtt={() => setAtt(!att)}
+      />
 
 
       </Modal>

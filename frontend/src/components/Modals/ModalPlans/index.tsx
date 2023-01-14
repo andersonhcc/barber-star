@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { ButtonDefault } from '../ButtonDefault';
+import { ButtonDefault } from '../../ButtonDefault';
 
 import { useTheme } from 'styled-components';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../../context/AuthContext';
 
 import {
   Container,
@@ -86,7 +86,7 @@ export function ModalPlans({ setVisible }: Props) {
 
               <ButtonDefault
                 title="VIRAR PREMIUM"
-                backgroundColor={theme.colors.background_finish}
+                backgroundColor={theme.colors.primary}
                 width={200}
                 fontSize={13}
               />

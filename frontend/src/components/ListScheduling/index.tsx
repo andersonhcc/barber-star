@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Alert } from 'react-native';
 import { IScheduling } from '../../screens/Scheduling';
 
-import { ModalDetailsService } from '../ModalDetailsService';
+import { ModalDetailsService } from '../Modals/ModalDetailsService';
 
 import { api } from '../../services/api';
 
