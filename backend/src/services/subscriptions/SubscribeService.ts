@@ -2,7 +2,6 @@ import prismaClient from "../../prisma";
 import Stripe from "stripe";
 
 class SubscribeService {
-
   async execute(user_id: string) {
 
     const stripe = new Stripe(
