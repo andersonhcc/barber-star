@@ -59,7 +59,6 @@ class SubscribeService {
     return { sessionId: stripeCheckoutSession.id }
 
   }
-
 }
 
 export { SubscribeService };
