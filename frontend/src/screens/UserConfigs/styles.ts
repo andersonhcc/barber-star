@@ -22,9 +22,9 @@ export const Header = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
+  font-family: ${({ theme }) => theme.fonts.medium};
   font-size: 23px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const Main = styled.View`
@@ -36,7 +36,7 @@ export const TitlePlan = styled.Text`
   
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: 15px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.title};
 `;
 
 export const BoxPlan = styled.View`

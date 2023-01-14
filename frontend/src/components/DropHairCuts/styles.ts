@@ -13,7 +13,7 @@ export const Main = styled.View`
   margin-top: ${HEIGHT - 500}px;
   width: ${WIDTH - 100}px;
   height: ${HEIGHT/4}px;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.background_secondary};
 `;
 
 export const WrapperScroll = styled.ScrollView.attrs({

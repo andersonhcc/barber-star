@@ -33,7 +33,7 @@ export function HairCuts() {
   const [editCut, setEditCut] = useState({} as IHairCuts);
   const [visible, setVisible] = useState(false);
   const [att, setAtt] = useState(false);
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(true);
 
   const theme = useTheme();
 

@@ -44,12 +44,11 @@ export const InputName = styled.TextInput`
   padding: 10px;
   margin-bottom: 10px;
   
-  background-color: ${({ theme }) => theme.colors.background_secondary};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.title};
 
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: 13px;
-  color: ${({ theme }) => theme.colors.white};
 
 `;
 

@@ -35,7 +35,9 @@ export function ModalScheduling({ closeScheduling, hairCuts, cadasterService }: 
   const [price, setPrice] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [visibleDrop, setVisibleDrop] = useState(false);
-  const [hairCutSelected, setHairCutSelected] = useState({} as IHaircut);
+  const [hairCutSelected, setHairCutSelected] = useState({
+    name: 'Corte'
+  } as IHaircut);
 
   async function handleCadasterService() {
 
@@ -74,7 +76,7 @@ export function ModalScheduling({ closeScheduling, hairCuts, cadasterService }: 
         <Form>
           <InputName
             placeholder='Nome do cliente'
-            placeholderTextColor={theme.colors.white}
+            placeholderTextColor={theme.colors.title}
             value={name}
             onChangeText={setName}
           />
@@ -97,7 +99,7 @@ export function ModalScheduling({ closeScheduling, hairCuts, cadasterService }: 
             <ButtonDefault
               title="Enviar"
               onPress={handleCadasterService}
-              backgroundColor={theme.colors.background_secondary}
+              backgroundColor={theme.colors.primary}
               width={200}
               height={40}
               isLoading={isLoading}

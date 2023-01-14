@@ -43,13 +43,14 @@ export const InputName = styled.TextInput`
   width: 90%;
   padding: 10px;
   margin-bottom: 10px;
+
+  border-radius: 5px;
   
-  background-color: ${({ theme }) => theme.colors.background_secondary};
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.title};
 
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: 13px;
-  color: ${({ theme }) => theme.colors.white};
 
 `;
 
@@ -73,7 +74,8 @@ export const TextChoose = styled.Text`
 
 
 export const ButtonHairCuts = styled.TouchableOpacity`
-  background-color: ${({ theme }) => theme.colors.background_secondary};
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 5px;
   width: 90%;
   padding-top: 3%;
   align-items: center;
@@ -91,12 +93,12 @@ export const BoxInfo = styled.View`
 
 export const IconMaterial = styled(MaterialIcons)`
   font-size: ${RFValue(24)}px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const TitleHairCut = styled.Text`
 
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.title};
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(15)}px;
   margin-left: 5px;
@@ -105,7 +107,7 @@ export const TitleHairCut = styled.Text`
 
 export const IconFeather = styled(Feather)`
   font-size: ${RFValue(25)}px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.title};
 
 `;
 

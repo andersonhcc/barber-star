@@ -16,7 +16,7 @@ export const Header = styled.View`
 export const Title = styled.Text`
   font-size: 40px;
   font-family: ${({ theme }) => theme.fonts.medium};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.title};
 `;
 
 export const TitleStar = styled.Text`
@@ -29,7 +29,7 @@ export const TitleStar = styled.Text`
 export const SubTitle = styled.Text`
   font-size: 15px;
   font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.title};
   line-height: 25px;
   margin-top: 16px;
 

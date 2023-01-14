@@ -27,8 +27,8 @@ export function AppRoutes() {
       screenOptions={{
         headerShown: false,
         tabBarHideOnKeyboard: true,
-        tabBarActiveTintColor: `${theme.colors.white}`,
-        tabBarInactiveTintColor: `${theme.colors.primary}`,
+        tabBarActiveTintColor: `${theme.colors.primary}`,
+        tabBarInactiveTintColor: `${theme.colors.white}`,
         tabBarShowLabel: false,
 
         tabBarStyle: {

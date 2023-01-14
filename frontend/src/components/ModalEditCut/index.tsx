@@ -31,7 +31,7 @@ export function ModalEditCut({ closeModal, data, setAtt }: Props) {
   const [name, setName] = useState(data.name);
   const [price, setPrice] = useState(data.price);
   const [isLoading, setIsLoading] = useState(false);
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(true);
 
 
   console.log(data.id);
@@ -59,10 +59,7 @@ export function ModalEditCut({ closeModal, data, setAtt }: Props) {
   }
 
   function toggleSwitch() {
-
     setIsEnabled(prevState => !prevState)
-
-
   }
 
 
@@ -88,14 +85,12 @@ export function ModalEditCut({ closeModal, data, setAtt }: Props) {
 
         </WrapperTitle>
 
-
-
         <Form>
 
           <TextChoose>Nome</TextChoose>
 
           <InputName
-            placeholderTextColor={theme.colors.white}
+            placeholderTextColor={theme.colors.title}
             value={name}
             onChangeText={setName}
           />
@@ -105,7 +100,7 @@ export function ModalEditCut({ closeModal, data, setAtt }: Props) {
 
           <InputName
             placeholder={`${data.price}`}
-            placeholderTextColor={theme.colors.white}
+            placeholderTextColor={theme.colors.title}
             value={price}
             onChangeText={setPrice}
           />
@@ -114,7 +109,7 @@ export function ModalEditCut({ closeModal, data, setAtt }: Props) {
 
             <ButtonDefault
               title="Editar"
-              backgroundColor={theme.colors.background_secondary}
+              backgroundColor={theme.colors.primary}
               width={200}
               height={40}
               isLoading={isLoading}

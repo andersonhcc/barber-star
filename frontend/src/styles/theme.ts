@@ -2,9 +2,9 @@ export default {
   colors: {
     header: '#1b1b1f',
 
-    background: '#1F1B24',
-    background_secondary: "#2f2f2f",
-    primary: '#313951',
+    background: '#F1F2F3',
+    background_secondary: "#43405D",
+    primary: '#FFA079',
     secondary: '#aa1f2b',
     secondary_light: '#90373e',
     background_finish: '#43405D',

@@ -46,9 +46,9 @@ export function ModalDetailsService({ closeModal, data, handleFinishService}: Pr
 
         <Details>
 
-          <Name>{data.customer}</Name>
-          <HairCut>{data.haircut.name}</HairCut>
-          <Price>{data.haircut.price}</Price>
+          <Name>Nome: {data.customer}</Name>
+          <HairCut>Corte: {data.haircut.name}</HairCut>
+          <Price>Preço: {data.haircut.price}</Price>
 
         </Details>
 
@@ -56,7 +56,7 @@ export function ModalDetailsService({ closeModal, data, handleFinishService}: Pr
 
           <ButtonDefault
             title="Finalizar"
-            backgroundColor={theme.colors.background_secondary}
+            backgroundColor={theme.colors.primary}
             onPress={handleFinishService}
             width={150}
             height={40}

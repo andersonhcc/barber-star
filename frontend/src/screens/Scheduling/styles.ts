@@ -11,7 +11,7 @@ export const Container = styled.SafeAreaView`
 
 export const Header = styled.View`
   width: 100%;
-  height: 150px;
+  height: 120px;
   flex-direction: row;
 
   justify-content: space-between;
@@ -20,9 +20,9 @@ export const Header = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.regular};
+  font-family: ${({ theme }) => theme.fonts.medium};
   font-size: 23px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.title};
 `;
 
 
@@ -99,7 +99,7 @@ export const WrapperTitleScheduling = styled.View`
 export const TitleScheduling = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: 23px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.title};
 `;
 
 export const ButtonAddScheduling = styled.TouchableOpacity`
@@ -136,7 +136,7 @@ export const Icon = styled(AntDesign).attrs({
   name: "logout"
 })`
   font-size: 23px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.title};
 `;
 
 
