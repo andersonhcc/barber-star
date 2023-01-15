@@ -9,14 +9,14 @@ import {
 
 import * as yup from 'yup';
 
-import { useAuth } from '../../context/AuthContext';
-import { api } from '../../services/api';
+import { useAuth } from '@context/AuthContext';
+import { api } from '@services/api';
 
 import { useTheme } from 'styled-components';
 
-import { Input } from '../../components/Input';
-import { PasswordInput } from '../../components/PasswordInput';
-import { ButtonDefault } from '../../components/ButtonDefault';
+import { Input } from '@components/Input';
+import { PasswordInput } from '@components/PasswordInput';
+import { ButtonDefault } from '@components/ButtonDefault';
 
 import {
   Container,

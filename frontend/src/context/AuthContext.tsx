@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { api } from "../services/api";
+import { api } from "@services/api";
 
 interface IAuth {
   user: IUser;

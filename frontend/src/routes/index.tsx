@@ -4,9 +4,9 @@ import { AuthRoutes } from './auth.routes';
 import { AppRoutes } from './app.routes';
 
 import { useTheme } from 'styled-components';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '@context/AuthContext';
 
-import { Loading } from '../components/Loading';
+import { Loading } from '@components/Loading';
 
 export function Routes (){
     const theme = useTheme();

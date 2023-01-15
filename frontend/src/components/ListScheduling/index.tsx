@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Alert } from 'react-native';
-import { IScheduling } from '../../screens/Scheduling';
+import { IScheduling } from '@screens/Scheduling';
 
 import { ModalDetailsService } from '../Modals/ModalDetailsService';
 

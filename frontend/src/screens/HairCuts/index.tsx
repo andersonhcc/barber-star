@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, Modal, Switch } from 'react-native';
 
-import { ButtonDefault } from '../../components/ButtonDefault';
-import { ModalEditCut } from '../../components/Modals/ModalEditCut';
-import { ModalCreateCut } from '../../components/Modals/ModalCreateCut';
+import { ButtonDefault } from '@components/ButtonDefault';
+import { ModalEditCut } from '@components/Modals/ModalEditCut';
+import { ModalCreateCut } from '@components/Modals/ModalCreateCut';
 
 import { useTheme } from 'styled-components';
 
-import { api } from '../../services/api';
+import { api } from '@services/api';
 
 import {
   Container,

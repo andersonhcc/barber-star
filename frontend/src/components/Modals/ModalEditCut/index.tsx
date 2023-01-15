@@ -3,7 +3,7 @@ import { Pressable, Alert, Switch } from 'react-native';
 import { ButtonDefault } from '../../ButtonDefault';
 import { useTheme } from 'styled-components';
 
-import { IHaircut } from '../../../screens/Scheduling';
+import { IHaircut } from '@screens/Scheduling';
 
 import { api } from '../../../services/api';
 

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Modal, Alert, KeyboardAvoidingView, Platform } from 'react-native';
 
-import { api } from '../../services/api';
+import { api } from '@services/api';
 
-import { ButtonDefault } from '../../components/ButtonDefault';
-import { OptionProfile } from '../../components/OptionProfile';
-import { ModalPlans } from '../../components/Modals/ModalPlans';
+import { ButtonDefault } from '@components/ButtonDefault';
+import { OptionProfile } from '@components/OptionProfile';
+import { ModalPlans } from '@components/Modals/ModalPlans';
 
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '@context/AuthContext';
 import { useTheme } from 'styled-components';
 
 import {

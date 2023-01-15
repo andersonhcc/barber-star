@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IHaircut } from '../../screens/Scheduling';
+import { IHaircut } from '@screens/Scheduling';
 
 import {
   Container,

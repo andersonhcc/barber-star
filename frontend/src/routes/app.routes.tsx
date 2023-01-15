@@ -7,9 +7,9 @@ import { SceneName } from './scene-name';
 import { Feather } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { Scheduling } from '../screens/Scheduling';
-import { HairCuts } from '../screens/HairCuts';
-import { UserConfigs } from '../screens/UserConfigs';
+import { Scheduling } from '@screens/Scheduling';
+import { HairCuts } from '@screens/HairCuts';
+import { UserConfigs } from '@screens/UserConfigs';
 
 import { useTheme } from 'styled-components';
 

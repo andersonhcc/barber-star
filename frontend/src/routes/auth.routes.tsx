@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from './react-navigation';
 import { SceneName } from './scene-name';
 
-import { SignIn } from '../screens/SignIn';
+import { SignIn } from '@screens/SignIn';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

@@ -3,8 +3,8 @@ import { Pressable, Alert } from 'react-native';
 
 import { useTheme } from 'styled-components';
 
-import { IScheduling } from '../../../screens/Scheduling';
-import { ButtonDefault } from '../../ButtonDefault';
+import { IScheduling } from '@screens/Scheduling';
+import { ButtonDefault } from '@components/ButtonDefault';
 
 import {
   Container,

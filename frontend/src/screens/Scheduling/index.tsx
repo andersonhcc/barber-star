@@ -1,16 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { FlatList, Animated, Modal, Alert } from 'react-native';
 
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '@context/AuthContext';
 
-import theme from '../../styles/theme';
+import { ListScheduling } from '@components/ListScheduling';
+import { ButtonDefault } from '@components/ButtonDefault';
+import { ModalScheduling } from '@components/Modals/ModalScheduling';
+import { ModalPlans } from '@components/Modals/ModalPlans';
 
-import { ListScheduling } from '../../components/ListScheduling';
-import { ButtonDefault } from '../../components/ButtonDefault';
-import { ModalScheduling } from '../../components/Modals/ModalScheduling';
-import { ModalPlans } from '../../components/Modals/ModalPlans';
-
-import { api } from '../../services/api';
+import { api } from '@services/api';
 
 import {
   Container,
