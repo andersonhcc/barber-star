@@ -4,9 +4,10 @@ import { FlatList, Animated, Modal, Alert } from 'react-native';
 import { useAuth } from '@context/AuthContext';
 
 import { ListScheduling } from '@components/ListScheduling';
-import { ButtonDefault } from '@components/ButtonDefault';
 import { ModalScheduling } from '@components/Modals/ModalScheduling';
 import { ModalPlans } from '@components/Modals/ModalPlans';
+
+import { BannerPublicity } from '@components/BannerPublicity';
 
 import { api } from '@services/api';
 
@@ -137,15 +138,9 @@ export function Scheduling() {
 
         </Header>
 
-        <BoxPublicity>
-          <TextPublicty>50% off</TextPublicty>
-          <LabelPublicty>Adiquira já o plano premium!</LabelPublicty>
+        <BannerPublicity setVisiblePlans={setVisiblePlans}/>
 
-          <ButtonPublicty onPress={() => setVisiblePlans(true)}>
-            <TitleButton>Aproveitar</TitleButton>
-          </ButtonPublicty>
 
-        </BoxPublicity>
 
         <Main>
           <WrapperTitleScheduling>
