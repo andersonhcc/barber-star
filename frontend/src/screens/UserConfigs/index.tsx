@@ -29,15 +29,17 @@ export function UserConfigs() {
   const [name, setName] = useState(user.name);
   const [endereco, setEndereco] = useState(user.endereco);
   const [visible, setVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const isIOS = Platform.OS === 'ios';
 
   async function handleEdit() {
+    setIsLoading(true);
 
     if (name === '' || endereco === '') {
+      setIsLoading(false);
       return;
     }
     try {
-
       const response = await api.put("/users", {
         name,
         endereco,
@@ -54,17 +56,23 @@ export function UserConfigs() {
       Alert.alert("Atualizado com sucesso!");
 
     } catch (error) {
-
       console.log(error);
       Alert.alert("Atualização", "Deu algum error.");
+    }
+
+    finally {
+      setIsLoading(false);
     }
   }
 
   return (
 
     <KeyboardAvoidingView
-    keyboardVerticalOffset={500}
+      behavior="position"
+      keyboardVerticalOffset={-200}
+      enabled
       style={{ flex: 1 }}
+
     >
 
       <Container>
@@ -73,7 +81,6 @@ export function UserConfigs() {
           <Title>Minha conta</Title>
         </Header>
 
-        <Main>
 
           <OptionProfile
             title="Nome barbearia"
@@ -104,10 +111,10 @@ export function UserConfigs() {
               title="Salvar"
               backgroundColor={theme.colors.primary}
               onPress={handleEdit}
+              isLoading={isLoading}
             />
           </Buttons>
 
-        </Main>
 
         <Modal
           animationType='fade'

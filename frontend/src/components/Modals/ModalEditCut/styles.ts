@@ -77,3 +77,10 @@ export const WrapperTitle = styled.View`
   align-items: center;
   justify-content: space-between;
 `;
+
+export const TitleStatus = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.regular};
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.white};
+  align-self: flex-start;
+`;

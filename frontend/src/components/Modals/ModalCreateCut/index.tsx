@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import { Pressable, Alert, Switch } from 'react-native';
+import { Pressable, Alert } from 'react-native';
 import { ButtonDefault } from '../../ButtonDefault';
+
+import { IHaircut } from '@screens/Scheduling';
+
+
 import { useTheme } from 'styled-components';
+import { useAuth } from '@context/AuthContext';
 
 
 import { api } from '../../../services/api';
@@ -19,19 +24,39 @@ import {
 interface Props {
   closeModal(): void;
   setAtt(): void;
+  hairCuts: IHaircut[];
 }
 
-export function ModalCreateCut({ closeModal, setAtt }: Props) {
+export function ModalCreateCut({ closeModal, setAtt, hairCuts }: Props) {
 
   const theme = useTheme();
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
+  const { user } = useAuth();
+
+
 
 
   async function handleCadasterCut() {
     const priceFormatted = Number(price);
+    setIsLoading(true);
+    console.log(hairCuts.length);
 
+    if(user.subscriptions.status !== 'active' && hairCuts.length === 3){
+
+      Alert.alert("Error");
+      setIsLoading(false);
+
+    }
+
+
+    if (name === '' || price === '') {
+      setIsLoading(false)
+      return;
+    }
 
     try {
 
@@ -50,8 +75,13 @@ export function ModalCreateCut({ closeModal, setAtt }: Props) {
       console.log(error);
 
     }
+    finally {
+      setIsLoading(false)
+    }
 
   }
+
+
 
   return (
     <Container>
@@ -78,6 +108,7 @@ export function ModalCreateCut({ closeModal, setAtt }: Props) {
             onChangeText={setPrice}
           />
 
+
           <WrapperButton>
 
             <ButtonDefault
@@ -87,7 +118,7 @@ export function ModalCreateCut({ closeModal, setAtt }: Props) {
               width={200}
               height={40}
               isLoading={isLoading}
-
+              disabled={disabled}
             />
 
           </WrapperButton>

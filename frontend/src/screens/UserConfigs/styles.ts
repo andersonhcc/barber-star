@@ -5,7 +5,6 @@ interface TextProps {
 }
 
 export const Container = styled.SafeAreaView`
-  flex: 1;
   padding-left: 5%;
   
   background-color: ${({ theme }) => theme.colors.background};

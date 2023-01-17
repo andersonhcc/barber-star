@@ -52,12 +52,10 @@ export function HairCuts() {
     setEditCut(data);
   }
 
-  function toggleSwitch(){
-  
+  function toggleSwitch() {
+
     setIsEnabled(prevState => !prevState)
     setAtt(!att);
-  
-  
   }
 
   useEffect(() => {
@@ -78,7 +76,7 @@ export function HairCuts() {
           ios_backgroundColor="#3e3e3e"
           onValueChange={toggleSwitch}
           value={isEnabled}
-          style={{ marginRight: 40}}
+          style={{ marginRight: 40 }}
         />
 
       </Header>
@@ -115,9 +113,7 @@ export function HairCuts() {
           closeModal={() => setVisible(false)}
           data={editCut}
           setAtt={() => setAtt(!att)}
-
         />
-
 
       </Modal>
 
@@ -127,10 +123,11 @@ export function HairCuts() {
         visible={visibleCadaster}
       >
 
-      <ModalCreateCut 
+        <ModalCreateCut
           closeModal={() => setVisibleCadaster(false)}
           setAtt={() => setAtt(!att)}
-      />
+          hairCuts={hairCuts}
+        />
 
 
       </Modal>

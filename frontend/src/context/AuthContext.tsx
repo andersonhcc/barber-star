@@ -22,12 +22,18 @@ interface IAuthProvider {
   children: ReactNode;
 }
 
+interface ISubscriptions {
+  id: string;
+  status: string;
+}
+
 interface IUser {
   id: string;
   name: string;
   email: string;
   token: string;
   endereco?: string;
+  subscriptions: ISubscriptions;
 }
 
 
@@ -50,6 +56,10 @@ function AuthProvider({ children }: IAuthProvider) {
     name: '',
     email: '',
     token: '',
+    subscriptions: {
+      id: '',
+      status: '',
+    }
   });
 
   const isAuthenticated = !!user.name;
@@ -63,7 +73,7 @@ function AuthProvider({ children }: IAuthProvider) {
         password,
       })
 
-      const { id, name, token, endereco } = response.data;
+      const { id, name, token, endereco, subscriptions } = response.data;
       const data = {
         ...response.data,
       }
@@ -79,6 +89,7 @@ function AuthProvider({ children }: IAuthProvider) {
         token,
         endereco,
         email,
+        subscriptions
       });
 
       setLoadingAuth(false);
@@ -99,6 +110,10 @@ function AuthProvider({ children }: IAuthProvider) {
           name: '',
           email: '',
           token: '',
+          subscriptions: {
+            id: '',
+            status: '',
+          }
         })
       })
   }
@@ -115,6 +130,7 @@ function AuthProvider({ children }: IAuthProvider) {
           name: hasUser.name,
           email: hasUser.email,
           token: hasUser.token,
+          subscriptions: hasUser.subscriptions
         })
       }
 

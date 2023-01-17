@@ -17,6 +17,7 @@ import {
   WrapperButton,
   TextChoose,
   WrapperTitle,
+  TitleStatus,
 } from './styles';
 
 interface Props {
@@ -40,7 +41,7 @@ export function ModalEditCut({ closeModal, data, setAtt }: Props) {
         name,
         price,
         haircut_id: data.id,
-        status: 'true',
+        status: isEnabled,
       });
 
       closeModal();
@@ -72,13 +73,7 @@ export function ModalEditCut({ closeModal, data, setAtt }: Props) {
 
           <Title>Editar modelo</Title>
 
-          <Switch
-            trackColor={{ false: '#767577', true: `${theme.colors.check}` }}
-            thumbColor={isEnabled ? '#f4f3f4' : '#f4f3f4'}
-            ios_backgroundColor="#3e3e3e"
-            onValueChange={toggleSwitch}
-            value={isEnabled}
-          />
+
 
         </WrapperTitle>
 
@@ -100,6 +95,18 @@ export function ModalEditCut({ closeModal, data, setAtt }: Props) {
             placeholderTextColor={theme.colors.title}
             value={price}
             onChangeText={setPrice}
+          />
+
+          <TitleStatus>Corte ativo?</TitleStatus>
+
+
+          <Switch
+            trackColor={{ false: '#767577', true: `${theme.colors.check}` }}
+            thumbColor={isEnabled ? '#f4f3f4' : '#f4f3f4'}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={toggleSwitch}
+            value={isEnabled}
+            style={{ alignSelf: 'flex-start' }}
           />
 
           <WrapperButton>
