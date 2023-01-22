@@ -129,7 +129,6 @@ export function HairCuts() {
           hairCuts={hairCuts}
         />
 
-
       </Modal>
 
     </Container>

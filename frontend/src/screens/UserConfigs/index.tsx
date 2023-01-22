@@ -51,6 +51,10 @@ export function UserConfigs() {
         email: user.email,
         id: user.id,
         token: user.token,
+        subscriptions: {
+          id: '',
+          status: ''
+        },
       })
 
       Alert.alert("Atualizado com sucesso!");
