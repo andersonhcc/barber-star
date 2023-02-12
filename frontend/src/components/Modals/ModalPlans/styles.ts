@@ -5,16 +5,13 @@ import { AntDesign } from '@expo/vector-icons';
 export const Container = styled.View`
   flex: 1;
   padding-left: 5%;
-  
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
 export const Header = styled.View`
   width: 100%;
   height: 110px;
-
   justify-content: space-between;
-
 `;
 
 export const Title = styled.Text`
@@ -30,7 +27,6 @@ export const TitleFree = styled.Text`
   font-size: 18px;
   color: ${({ theme }) => theme.colors.white};
   padding-bottom: 10px;
-
 `;
 
 export const Main = styled.View`
@@ -42,8 +38,6 @@ export const BoxPlan = styled.View`
   margin-top: 20px;
   padding: 15px;
   background-color: ${({ theme }) => theme.colors.background_secondary};
-
-
 `;
 
 
@@ -52,7 +46,6 @@ export const SubTitle = styled.Text`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.white};
   padding-bottom: 10px;
-
 `;
 
 export const TitlePremium = styled.Text`
@@ -61,7 +54,6 @@ export const TitlePremium = styled.Text`
   font-size: 18px;
   color: ${({ theme }) => theme.colors.check};
   padding-bottom: 10px;
-
 `;
 
 export const WrapperButton = styled.View`
@@ -76,5 +68,4 @@ export const IconLeft = styled(AntDesign)`
   font-size: 30px;
   margin-top: 20px;
   color: ${({ theme }) => theme.colors.background_finish};
-
 `;

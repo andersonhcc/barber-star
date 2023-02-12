@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ButtonDefault } from '../../ButtonDefault';
 
 import { useTheme } from 'styled-components';
@@ -23,13 +23,10 @@ interface Props {
 }
 
 export function ModalPlans({ setVisible }: Props) {
-
   const theme = useTheme();
   const { isPremium } = useAuth();
-
   return (
     <Container>
-
       <Header>
         <ButtonBack onPress={setVisible}>
           <IconLeft name="left" />
@@ -56,7 +53,6 @@ export function ModalPlans({ setVisible }: Props) {
           <SubTitle>Editar tipos de corte</SubTitle>
           <SubTitle>Recebe todas atualizações</SubTitle>
 
-
           <WrapperButton>
 
             {isPremium ?
@@ -80,7 +76,6 @@ export function ModalPlans({ setVisible }: Props) {
                   fontColor={theme.colors.background_finish}
 
                 />
-
               </>
               :
 
@@ -90,9 +85,7 @@ export function ModalPlans({ setVisible }: Props) {
                 width={200}
                 fontSize={13}
               />
-
             }
-
 
           </WrapperButton>
 

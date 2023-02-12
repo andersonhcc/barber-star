@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Modal, Alert } from 'react-native';
-import { IScheduling } from '@screens/Scheduling';
 
 import { ModalDetailsService } from '../Modals/ModalDetailsService';
+import { Props } from './types';
 
 import { api } from '../../services/api';
 
@@ -16,10 +16,7 @@ import {
   Price,
 } from './styles';
 
-interface Props {
-  data: IScheduling
-  setAtt():void
-}
+
 
 export function ListScheduling({ data, setAtt }: Props) {
   const [visible, setVisible] = useState(false);
@@ -34,19 +31,14 @@ export function ListScheduling({ data, setAtt }: Props) {
 
   async function handleFinishService(){
     try {
-
-      const response = await api.delete(`/schedule?schedule_id=${data.id}`);
-      
+      await api.delete(`/schedule?schedule_id=${data.id}`);
       closeModal();
       setAtt();
-
       console.log("Finish.")
       
     } catch (err) {
-
       Alert.alert("Opa", "Não foi possível finalizar o serviço.")
       console.log(err)
-      
     }
   }
 

@@ -5,7 +5,6 @@ import { AntDesign } from '@expo/vector-icons';
 export const Container = styled.SafeAreaView`
   flex: 1;
   padding-left: 5%;
-  
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
@@ -13,11 +12,8 @@ export const Header = styled.View`
   width: 100%;
   height: 110px;
   flex-direction: row;
-
   align-items: flex-end;
-
   justify-content: space-between;
-  
 
 `;
 
@@ -38,9 +34,7 @@ export const BoxHairCut = styled.TouchableOpacity`
   border-radius: 10px;
   flex-direction: row;
   padding: 10px 10px;
-
   background-color: ${({ theme }) => theme.colors.background_secondary};
-
 `;
 
 export const NameHairCut = styled.Text`
@@ -57,16 +51,12 @@ export const Icon = styled(AntDesign).attrs({
   color: ${({ theme }) => theme.colors.white};
 `;
 
-
 export const Price = styled.Text`
-
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: 18px;
   color: ${({ theme }) => theme.colors.white};
-
   position: absolute;
   right: 0;
-
   margin-right: 10px;
   margin-top: 5px;
 

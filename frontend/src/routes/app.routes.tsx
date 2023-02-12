@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { RootStackParamList } from './react-navigation';
+import { RootStackParamList } from '../@types/react-navigation';
 import { SceneName } from './scene-name';
 
 

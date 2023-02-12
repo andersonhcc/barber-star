@@ -3,7 +3,8 @@ import { Pressable, Modal, Alert } from 'react-native';
 import { ButtonDefault } from '../../ButtonDefault';
 import { useTheme } from 'styled-components';
 
-import { IHaircut, ICreateServiceDTO } from '@screens/Scheduling';
+import { IHairCuts } from '@screens/HairCuts/types';
+import { Props } from './types';
 import { DropHairCuts } from '@components/DropHairCuts';
 
 import {
@@ -22,11 +23,6 @@ import {
   IconFeather,
 } from './styles';
 
-interface Props {
-  closeScheduling(): void;
-  hairCuts: [] | IHaircut[]
-  cadasterService({ customer, haircut_id }: ICreateServiceDTO): void;
-}
 
 export function ModalScheduling({ closeScheduling, hairCuts, cadasterService }: Props) {
 
@@ -37,7 +33,7 @@ export function ModalScheduling({ closeScheduling, hairCuts, cadasterService }: 
   const [visibleDrop, setVisibleDrop] = useState(false);
   const [hairCutSelected, setHairCutSelected] = useState({
     name: 'Corte'
-  } as IHaircut);
+  } as IHairCuts);
 
   async function handleCadasterService() {
 
@@ -53,14 +49,11 @@ export function ModalScheduling({ closeScheduling, hairCuts, cadasterService }: 
       
       //feedback user;
 
-
     } catch (error) {
 
       Alert.alert("Opa", "Algo de errado aconteceu.");
       console.log(error);
-
     }
-
   }
 
   return (
@@ -125,7 +118,6 @@ export function ModalScheduling({ closeScheduling, hairCuts, cadasterService }: 
           setHairCutSelected={setHairCutSelected}
 
         />
-
       </Modal>
 
 

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { IHaircut } from '@screens/Scheduling';
-
 import {
   Container,
   Main,
@@ -10,12 +8,8 @@ import {
   Title,
 } from './styles';
 
-
-interface Props {
-  hairCuts: IHaircut[];
-  setVisibleDrop: () => void;
-  setHairCutSelected: (value: IHaircut) => void;
-}
+import { Props } from './types';
+import { IHairCuts } from '@screens/HairCuts/types';
 
 export function DropHairCuts({
   hairCuts,
@@ -23,8 +17,7 @@ export function DropHairCuts({
   setHairCutSelected
 } : Props) {
 
-
-  function handleCategorySelected(item: IHaircut){
+  function handleCategorySelected(item: IHairCuts){
     setHairCutSelected({
       name: item.name,
       id: item.id,
@@ -33,7 +26,6 @@ export function DropHairCuts({
     setVisibleDrop();
   }
 
-  
   return (
     <Container>
         <Main>

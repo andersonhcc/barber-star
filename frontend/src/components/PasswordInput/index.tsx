@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import { TextInputProps } from 'react-native';
 import { useTheme } from 'styled-components';
 import { Feather } from '@expo/vector-icons';
 
-interface Props extends TextInputProps {
-  iconName: React.ComponentProps<typeof Feather>['name'];
-  value?: string;
-}
+import { Props } from './types';
 
 import {
   Container,

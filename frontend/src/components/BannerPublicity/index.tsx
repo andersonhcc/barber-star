@@ -1,6 +1,7 @@
 import React from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import Animated, { useSharedValue, withSpring, useAnimatedStyle } from 'react-native-reanimated';
+import { Props } from './types';
 
 import {
   Container,
@@ -9,12 +10,6 @@ import {
   ButtonPublicty,
   TitleButton,
 } from './styles';
-
-interface Props {
-  setVisiblePlans(value: boolean): void;
-}
-
-
 
 export function BannerPublicity({ setVisiblePlans }: Props) {
 
@@ -58,8 +53,6 @@ export function BannerPublicity({ setVisiblePlans }: Props) {
         </ButtonPublicty>
 
       </Animated.View>
-
-
 
     </Pressable>
 

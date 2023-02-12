@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Alert, KeyboardAvoidingView, Platform } from 'react-native';
+import { Modal, Alert, KeyboardAvoidingView} from 'react-native';
 
 import { api } from '@services/api';
 
@@ -14,7 +14,6 @@ import {
   Container,
   Header,
   Title,
-  Main,
   TitlePlan,
   BoxPlan,
   SubTitlePLan,
@@ -30,7 +29,6 @@ export function UserConfigs() {
   const [endereco, setEndereco] = useState(user.endereco);
   const [visible, setVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const isIOS = Platform.OS === 'ios';
 
   async function handleEdit() {
     setIsLoading(true);
@@ -40,7 +38,7 @@ export function UserConfigs() {
       return;
     }
     try {
-      const response = await api.put("/users", {
+     await api.put("/users", {
         name,
         endereco,
       });
@@ -76,7 +74,6 @@ export function UserConfigs() {
       keyboardVerticalOffset={-200}
       enabled
       style={{ flex: 1 }}
-
     >
 
       <Container>

@@ -4,6 +4,7 @@ import { FlatList, Modal, Switch } from 'react-native';
 import { ButtonDefault } from '@components/ButtonDefault';
 import { ModalEditCut } from '@components/Modals/ModalEditCut';
 import { ModalCreateCut } from '@components/Modals/ModalCreateCut';
+import { IHairCuts } from './types';
 
 import { useTheme } from 'styled-components';
 
@@ -21,13 +22,6 @@ import {
   Footer,
 } from './styles';
 
-interface IHairCuts {
-  id: string;
-  name: string;
-  price: string;
-  status: boolean;
-}
-
 export function HairCuts() {
 
   const [hairCuts, setHairCuts] = useState<IHairCuts[]>([]);
@@ -40,20 +34,16 @@ export function HairCuts() {
   const theme = useTheme();
 
   async function getHairCuts() {
-
     const response = await api.get(`/haircut?status=${isEnabled}`);
-
     setHairCuts(response.data);
   }
 
   function editCurt(data: IHairCuts) {
-
     setVisible(true)
     setEditCut(data);
   }
 
   function toggleSwitch() {
-
     setIsEnabled(prevState => !prevState)
     setAtt(!att);
   }
@@ -103,12 +93,10 @@ export function HairCuts() {
         />
       </Footer>
 
-
       <Modal
         transparent={true}
         visible={visible}
       >
-
         <ModalEditCut
           closeModal={() => setVisible(false)}
           data={editCut}
@@ -116,7 +104,6 @@ export function HairCuts() {
         />
 
       </Modal>
-
 
       <Modal
         transparent={true}
@@ -130,7 +117,6 @@ export function HairCuts() {
         />
 
       </Modal>
-
     </Container>
   );
 }

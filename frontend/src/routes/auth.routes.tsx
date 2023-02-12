@@ -1,6 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { RootStackParamList } from './react-navigation';
+import { RootStackParamList } from '../@types/react-navigation';
 import { SceneName } from './scene-name';
 
 import { SignIn } from '@screens/SignIn';

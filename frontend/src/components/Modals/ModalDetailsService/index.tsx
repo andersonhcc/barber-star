@@ -3,7 +3,7 @@ import { Pressable, Alert } from 'react-native';
 
 import { useTheme } from 'styled-components';
 
-import { IScheduling } from '@screens/Scheduling';
+import { Props } from './types';
 import { ButtonDefault } from '@components/ButtonDefault';
 
 import {
@@ -18,19 +18,8 @@ import {
   WrapperButton,
 } from './styles';
 
-interface Props {
-  closeModal(): void;
-  data: IScheduling
-  handleFinishService(): void;
-  setAtt():void
-
-}
-
-
-export function ModalDetailsService({ closeModal, data, handleFinishService}: Props) {
-
+export function ModalDetailsService({ closeModal, data, handleFinishService }: Props) {
   const theme = useTheme();
-
   return (
     <Container>
 

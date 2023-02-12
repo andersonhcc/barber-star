@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { Pressable, Alert } from 'react-native';
 import { ButtonDefault } from '../../ButtonDefault';
 
-import { IHaircut } from '@screens/Scheduling';
-
+import { Props } from './types';
 
 import { useTheme } from 'styled-components';
 import { useAuth } from '@context/AuthContext';
-
 
 import { api } from '../../../services/api';
 
@@ -21,24 +19,14 @@ import {
   WrapperButton,
 } from './styles';
 
-interface Props {
-  closeModal(): void;
-  setAtt(): void;
-  hairCuts: IHaircut[];
-}
-
 export function ModalCreateCut({ closeModal, setAtt, hairCuts }: Props) {
 
   const theme = useTheme();
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isEnabled, setIsEnabled] = useState(true);
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, ] = useState(false);
   const { user } = useAuth();
-
-
-
 
   async function handleCadasterCut() {
     const priceFormatted = Number(price);
@@ -46,12 +34,9 @@ export function ModalCreateCut({ closeModal, setAtt, hairCuts }: Props) {
     console.log(hairCuts.length);
 
     if(user.subscriptions.status !== 'active' && hairCuts.length === 3){
-
       Alert.alert("Error");
       setIsLoading(false);
-
     }
-
 
     if (name === '' || price === '') {
       setIsLoading(false)
@@ -59,8 +44,7 @@ export function ModalCreateCut({ closeModal, setAtt, hairCuts }: Props) {
     }
 
     try {
-
-      const response = await api.post("/haircut", {
+      await api.post("/haircut", {
         name,
         price: priceFormatted
       });
@@ -73,15 +57,12 @@ export function ModalCreateCut({ closeModal, setAtt, hairCuts }: Props) {
 
       Alert.alert("Algo deu errado");
       console.log(error);
-
     }
     finally {
       setIsLoading(false)
     }
 
   }
-
-
 
   return (
     <Container>

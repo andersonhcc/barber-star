@@ -6,7 +6,6 @@ interface TextProps {
 
 export const Container = styled.SafeAreaView`
   padding-left: 5%;
-  
   background-color: ${({ theme }) => theme.colors.background};
 `;
 
@@ -14,7 +13,6 @@ export const Header = styled.View`
   width: 100%;
   height: 110px;
   flex-direction: row;
-
   justify-content: space-between;
   align-items: flex-end;
 
@@ -26,13 +24,9 @@ export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
 `;
 
-export const Main = styled.View`
-  flex: 1;
-`;
 
 export const TitlePlan = styled.Text`
   padding-top: 5%;
-  
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: 15px;
   color: ${({ theme }) => theme.colors.title};
@@ -45,12 +39,8 @@ export const BoxPlan = styled.View`
   border-radius: 5px;
   flex-direction: row;
   justify-content: space-between;
-
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.background_secondary};
-
-
-
 `;
 
 export const SubTitlePLan = styled.Text<TextProps>`
@@ -58,9 +48,7 @@ export const SubTitlePLan = styled.Text<TextProps>`
   font-size: 16px;
   color: ${({ theme }) => theme.colors.check};
 
-  ${({ isPremium, theme }) => isPremium ? css`color: ${theme.colors.secondary}` : css`color: ${theme.colors.check}`}
-
-
+  ${({ isPremium, theme }) => isPremium ? css`color: ${theme.colors.secondary};` : css`color: ${theme.colors.check};`}
 `;
 
 export const ButtonChangePlan = styled.TouchableOpacity`
@@ -75,13 +63,11 @@ export const TitleButton = styled.Text`
   font-family: ${({ theme }) => theme.fonts.medium};
   font-size: 13px;
   color: ${({ theme }) => theme.colors.white};
-
 `;
 
 export const Buttons = styled.View`
   width: 90%;
   padding-top: 10%;
-
   justify-content: center;
   align-items: center;
 `;

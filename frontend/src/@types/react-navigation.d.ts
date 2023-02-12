@@ -1,4 +1,4 @@
-import type { SceneName } from './scene-name'
+import type { SceneName } from '../routes/scene-name'
 
 export type RootStackParamList = {
   [SceneName.SignIn] : undefined;

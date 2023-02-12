@@ -43,10 +43,8 @@ export function SignIn() {
 
 
   async function handleSignIn() {
-
-
+    
     try {
-
       const schema = yup.object().shape({
         password: yup.string()
           .required('A senha é obrigatória'),
@@ -57,11 +55,7 @@ export function SignIn() {
 
       await schema.validate({ email, password });
 
-
-
       await signIn({ email, password });
-
-
 
     } catch (error) {
       if (error instanceof yup.ValidationError) {
@@ -73,39 +67,29 @@ export function SignIn() {
         )
       }
     }
-
   }
 
   async function handleSignUp() {
     try {
-      const response = await api.post('/users', {
+      await api.post('/users', {
         name,
         email,
         password,
       });
-
       Alert.alert('Cadastrado com sucesso!');
-
     } catch (error) {
       console.log(error);
       Alert.alert('Ops', 'Não foi possível cadastrar sua barbearia!');
-
     }
   }
 
-
   useEffect(() => {
-
     Animated.timing(opacityAnimated, {
       toValue: 1,
       duration: 3500,
       useNativeDriver: false,
     }).start();
-
-
   }, [])
-
-
 
   return (
     <KeyboardAvoidingView

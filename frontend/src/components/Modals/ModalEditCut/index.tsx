@@ -3,8 +3,7 @@ import { Pressable, Alert, Switch } from 'react-native';
 import { ButtonDefault } from '../../ButtonDefault';
 import { useTheme } from 'styled-components';
 
-import { IHaircut } from '@screens/Scheduling';
-
+import { Props } from './types';
 import { api } from '../../../services/api';
 
 import {
@@ -20,11 +19,6 @@ import {
   TitleStatus,
 } from './styles';
 
-interface Props {
-  closeModal(): void;
-  data: IHaircut;
-  setAtt(): void;
-}
 
 export function ModalEditCut({ closeModal, data, setAtt }: Props) {
 
@@ -36,30 +30,22 @@ export function ModalEditCut({ closeModal, data, setAtt }: Props) {
 
   async function ediCut() {
     try {
-
-      const response = await api.put("/haircut", {
+      await api.put("/haircut", {
         name,
         price,
         haircut_id: data.id,
         status: isEnabled,
       });
-
       closeModal();
       setAtt();
-
-
     } catch (err) {
       console.log(err);
       Alert.alert("Não foi possível editar");
     }
-
-
   }
-
   function toggleSwitch() {
     setIsEnabled(prevState => !prevState)
   }
-
 
   return (
     <Container>
@@ -70,11 +56,7 @@ export function ModalEditCut({ closeModal, data, setAtt }: Props) {
         </Pressable>
 
         <WrapperTitle>
-
           <Title>Editar modelo</Title>
-
-
-
         </WrapperTitle>
 
         <Form>
@@ -126,8 +108,6 @@ export function ModalEditCut({ closeModal, data, setAtt }: Props) {
         </Form>
 
       </Main>
-
-
 
     </Container>
   );
