@@ -23,8 +23,9 @@ class HairCutRepository implements IHairCutRepository {
     name,
     price
   }: IHairCutCreateDTO): Promise<IHairCutCreateDTO | null> {
-
-    //checking if it has already reached the limit
+      console.log(user_id);
+      console.log(name);
+      console.log(price);
 
     const myHairCuts = await this.hairCut.count({
       where: {
@@ -112,7 +113,7 @@ class HairCutRepository implements IHairCutRepository {
 
   }
 
-  async verifySignature({ user_id }: IHairVerifyDTO): Promise<IHairVerifyDTO | null> {
+  async verifySignature({ user_id }: IHairVerifyDTO){
 
     const status = await this.user.findFirst({
       where: {
@@ -127,9 +128,6 @@ class HairCutRepository implements IHairCutRepository {
         },
       }
     })
-
-
-
     return status;
 
 

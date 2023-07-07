@@ -31,7 +31,7 @@ interface IHairCutRepository {
   create({ user_id, name, price }: IHairCutCreateDTO): Promise<IHairCutCreateDTO | null>;
   list({ user_id, status }: IHairListDTO): Promise<IHairListDTO[] | null>;
   update({ haircut_id, name, price, status, user_id}: IHairUpdateDTO): Promise<IHairUpdateDTO| null>;
-  verifySignature({ user_id } : IHairVerifyDTO ): Promise<IHairVerifyDTO | null> ;
+  verifySignature({ user_id } : IHairVerifyDTO );
   countHairCut(user_id: string): Promise<number | null>;
   detailsHairCut(haircut_id: string): Promise<HairCut | null>;
 
