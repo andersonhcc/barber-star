@@ -2,18 +2,20 @@ import styled from 'styled-components/native';
 import { AntDesign } from '@expo/vector-icons'; 
 
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.View`
+  flex: 1;
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
+export const Content = styled.View`
   flex: 1;
   padding-left: 5%;
-  
-  background-color: ${({ theme }) => theme.colors.background};
 `;
 
 export const Header = styled.View`
   width: 100%;
   height: 120px;
   flex-direction: row;
-
   justify-content: space-between;
   align-items: flex-end;
 
@@ -34,15 +36,15 @@ export const SubTitle = styled.Text`
 
 export const Main = styled.View`
   flex:1;
-
   padding-top: 5%;
-
-
+  padding-left: 5%;
 `;
 
 export const WrapperTitleScheduling = styled.View`
   flex-direction: row;
   align-items: center;
+  padding-top: 20px;
+  
 `;
 
 export const TitleScheduling = styled.Text`
@@ -94,9 +96,8 @@ export const Icon = styled(AntDesign).attrs({
 
 export const Default = styled.View`
   height: 100%;
-
+  padding-top: 20%;
   align-items: center;
-  justify-content: center;
 `;
 
 export const TextDefault = styled.Text`

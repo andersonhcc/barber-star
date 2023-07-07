@@ -4,7 +4,7 @@ interface TextProps {
   isPremium: boolean;
 }
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.View`
   padding-left: 5%;
   background-color: ${({ theme }) => theme.colors.background};
 `;

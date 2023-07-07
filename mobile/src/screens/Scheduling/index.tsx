@@ -27,6 +27,7 @@ import {
   WrapperTitleScheduling,
   ButtonAddScheduling,
   LabelButton,
+  Content,
 } from './styles';
 
 
@@ -85,32 +86,36 @@ export function Scheduling() {
           opacity: opacityAnimated,
         }}
       >
-        <Header>
-          <Title>Olá, {"\n"}<SubTitle>{user.name}</SubTitle></Title>
-          <ButtonSignUp onPress={signOut}>
-            <Icon />
-          </ButtonSignUp>
-
-        </Header>
-
-        <BannerPublicity setVisiblePlans={setVisiblePlans}/>
-
         <Main>
-          <WrapperTitleScheduling>
-
-            <TitleScheduling>Agenda</TitleScheduling>
-            <ButtonAddScheduling onPress={() => setVisible(true)}>
-              <LabelButton>+</LabelButton>
-            </ButtonAddScheduling>
-          
-          </WrapperTitleScheduling>
-
           <WrapperList>
             <FlatList
               contentContainerStyle={{ paddingBottom: 170, flexGrow: 1 }}
               data={scheduling}
               keyExtractor={item => item.id}
               showsVerticalScrollIndicator={false}
+              ListHeaderComponent={() => (
+                <>
+                <Header>
+                <Title>Olá, {"\n"}<SubTitle>{user.name}</SubTitle></Title>
+                <ButtonSignUp onPress={signOut}>
+                  <Icon />
+                </ButtonSignUp>
+      
+              </Header>
+      
+              <BannerPublicity setVisiblePlans={setVisiblePlans}/>
+      
+                <WrapperTitleScheduling>
+
+                <TitleScheduling>Agenda</TitleScheduling>
+                <ButtonAddScheduling onPress={() => setVisible(true)}>
+                  <LabelButton>+</LabelButton>
+                </ButtonAddScheduling>
+              
+              </WrapperTitleScheduling>
+              </>
+
+              )}
               renderItem={({ item }) => (
                 <ListScheduling data={item} setAtt={() => setAtt(!att)}/>
               )}
@@ -123,8 +128,6 @@ export function Scheduling() {
             />
           </WrapperList>
         </Main>
-
-
       </Animated.View >
 
       <Modal

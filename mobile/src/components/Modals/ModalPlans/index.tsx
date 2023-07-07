@@ -16,6 +16,7 @@ import {
   SubTitle,
   TitlePremium,
   WrapperButton,
+  Content,
 } from './styles';
 
 interface Props {
@@ -27,6 +28,8 @@ export function ModalPlans({ setVisible }: Props) {
   const { isPremium } = useAuth();
   return (
     <Container>
+      <Content>
+
       <Header>
         <ButtonBack onPress={setVisible}>
           <IconLeft name="left" />
@@ -92,7 +95,7 @@ export function ModalPlans({ setVisible }: Props) {
         </BoxPlan>
 
       </Main>
-
+      </Content>
     </Container>
   );
 }

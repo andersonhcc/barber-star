@@ -29,14 +29,12 @@ export function ModalCreateCut({ closeModal, setAtt, hairCuts }: Props) {
   const { user } = useAuth();
 
   async function handleCadasterCut() {
-    const priceFormatted = Number(price);
     setIsLoading(true);
-    console.log(hairCuts.length);
 
-    if(user.subscriptions.status !== 'active' && hairCuts.length === 3){
-      Alert.alert("Error");
-      setIsLoading(false);
-    }
+    // if(user.subscriptions.status !== 'active' && hairCuts.length === 3){
+    //   Alert.alert("Error");
+    //   setIsLoading(false);
+    // }
 
     if (name === '' || price === '') {
       setIsLoading(false)
@@ -46,7 +44,7 @@ export function ModalCreateCut({ closeModal, setAtt, hairCuts }: Props) {
     try {
       await api.post("/haircut", {
         name,
-        price: priceFormatted
+        price: Number(price),
       });
 
       closeModal()

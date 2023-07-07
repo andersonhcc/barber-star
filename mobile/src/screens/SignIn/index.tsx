@@ -39,11 +39,10 @@ export function SignIn() {
   const theme = useTheme();
   const [signUp, setSignUp] = useState(false);
   const { signIn, loadingAuth } = useAuth();
+
   const opacityAnimated = useRef(new Animated.Value(0)).current;
-
-
   async function handleSignIn() {
-    
+
     try {
       const schema = yup.object().shape({
         password: yup.string()
@@ -92,15 +91,9 @@ export function SignIn() {
   }, [])
 
   return (
-    <KeyboardAvoidingView
-      behavior='position'
-      enabled
-      style={{ backgroundColor: '#FAF9F5', flex: 1 }}
-    >
+
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-
         <Container>
-
           <Animated.View
             style={{
               opacity: opacityAnimated,
@@ -199,7 +192,6 @@ export function SignIn() {
 
       </TouchableWithoutFeedback>
 
-    </KeyboardAvoidingView>
 
   );
 }

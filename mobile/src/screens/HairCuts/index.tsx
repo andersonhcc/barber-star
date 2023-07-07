@@ -20,6 +20,7 @@ import {
   NameHairCut,
   Price,
   Footer,
+  Content,
 } from './styles';
 
 export function HairCuts() {
@@ -54,6 +55,8 @@ export function HairCuts() {
 
   return (
     <Container>
+      <Content>
+
 
       <Header>
         <Title>
@@ -117,6 +120,8 @@ export function HairCuts() {
         />
 
       </Modal>
+      </Content>
+
     </Container>
   );
 }

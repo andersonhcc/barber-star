@@ -2,10 +2,14 @@ import styled from 'styled-components/native';
 import { AntDesign } from '@expo/vector-icons';
 
 
-export const Container = styled.SafeAreaView`
+export const Container = styled.View`
+  flex: 1;
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
+export const Content = styled.View`
   flex: 1;
   padding-left: 5%;
-  background-color: ${({ theme }) => theme.colors.background};
 `;
 
 export const Header = styled.View`
@@ -64,6 +68,6 @@ export const Price = styled.Text`
 
 export const Footer = styled.View`
   width: 100%;
-  height: 120px;
+  height: 150px;
   align-items: center;
 `;

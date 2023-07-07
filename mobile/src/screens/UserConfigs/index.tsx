@@ -68,7 +68,6 @@ export function UserConfigs() {
   }
 
   return (
-
     <KeyboardAvoidingView
       behavior="position"
       keyboardVerticalOffset={-200}
