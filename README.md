@@ -1,3 +1,2 @@
+https://github.com/andersonhcc/barber-star/assets/103274266/0a27dcbb-5453-495d-9f60-4345747fb414
 
-https://github.com/andersonhcc/barber-star/assets/103274266/70fe8e82-979f-493f-82f4-45cba8e6c492
-Uploading BarberStar.mp4…
